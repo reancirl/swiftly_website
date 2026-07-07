@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">The Telecom Shop project cover</title>
+  <desc id="desc">A blue ecommerce-inspired cover with connected telecom devices and The Telecom Shop name.</desc>
+  <defs>
+    <linearGradient id="background" x1="120" y1="80" x2="1480" y2="920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102e4a"/>
+      <stop offset="0.58" stop-color="#1b527c"/>
+      <stop offset="1" stop-color="#3498db"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8bc34a"/>
+      <stop offset="1" stop-color="#5f9f2f"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#071a2b" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#background)"/>
+  <circle cx="1405" cy="170" r="260" fill="#fff" opacity="0.045"/>
+  <circle cx="1280" cy="870" r="380" fill="#fff" opacity="0.035"/>
+  <path d="M0 790C250 700 432 828 684 744s447-116 916 20v236H0Z" fill="#071a2b" opacity="0.16"/>
+
+  <g transform="translate(120 140)">
+    <rect width="112" height="112" rx="28" fill="#fff"/>
+    <path d="M28 57c0-20 12-35 28-35s28 15 28 35" fill="none" stroke="#3498db" stroke-width="10" stroke-linecap="round"/>
+    <rect x="19" y="52" width="18" height="36" rx="9" fill="url(#accent)"/>
+    <rect x="75" y="52" width="18" height="36" rx="9" fill="url(#accent)"/>
+    <path d="M84 82c0 13-10 21-24 21" fill="none" stroke="#3498db" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="57" cy="103" r="5" fill="#3498db"/>
+  </g>
+
+  <text x="120" y="345" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="700" letter-spacing="-2">The Telecom Shop</text>
+  <text x="124" y="405" fill="#d8e8f5" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="500" letter-spacing="5">MAGENTO ECOMMERCE · AUSTRALIA</text>
+
+  <g transform="translate(114 520)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M108 84h242M350 84h132M482 84h132" stroke="#9bc7e5" stroke-width="5" stroke-dasharray="3 18" opacity="0.7"/>
+
+    <g filter="url(#shadow)">
+      <rect x="0" width="216" height="164" rx="30" fill="#fff" stroke="#d9eaf6" stroke-width="2"/>
+      <path d="M55 111c-13-12-19-28-19-46 0-9 7-16 16-16h20l13 30-18 14c11 20 25 34 45 45l14-18 30 13v20c0 9-7 16-16 16-35 0-69-14-94-39" stroke="#3498db" stroke-width="10"/>
+    </g>
+
+    <g transform="translate(350)" filter="url(#shadow)">
+      <rect width="216" height="164" rx="30" fill="#fff" stroke="#d9eaf6" stroke-width="2"/>
+      <rect x="55" y="29" width="106" height="72" rx="10" stroke="#3498db" stroke-width="9"/>
+      <path d="M88 135h40M108 103v32" stroke="#73ad3b" stroke-width="10"/>
+    </g>
+
+    <g transform="translate(700)" filter="url(#shadow)">
+      <rect width="216" height="164" rx="30" fill="#fff" stroke="#d9eaf6" stroke-width="2"/>
+      <path d="M56 80c0-31 23-54 52-54s52 23 52 54" stroke="#3498db" stroke-width="10"/>
+      <rect x="43" y="74" width="27" height="54" rx="13" fill="#73ad3b" stroke="none"/>
+      <rect x="146" y="74" width="27" height="54" rx="13" fill="#73ad3b" stroke="none"/>
+      <path d="M160 120c0 18-15 28-37 28" stroke="#3498db" stroke-width="8"/>
+    </g>
+
+    <g transform="translate(1050)" filter="url(#shadow)">
+      <rect width="216" height="164" rx="30" fill="#fff" stroke="#d9eaf6" stroke-width="2"/>
+      <path d="M43 62c38-39 92-39 130 0M65 86c25-25 61-25 86 0M91 112c10-10 24-10 34 0" stroke="#3498db" stroke-width="10"/>
+      <circle cx="108" cy="136" r="8" fill="#73ad3b" stroke="none"/>
+    </g>
+  </g>
+
+  <rect x="120" y="902" width="152" height="8" rx="4" fill="url(#accent)"/>
+  <text x="302" y="916" fill="#d8e8f5" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="3">BUSINESS COMMUNICATIONS &amp; IT</text>
+</svg>

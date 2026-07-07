@@ -105,6 +105,42 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "the-telecom-shop-magento-commerce",
+    service: "development",
+    client: "The Telecom Shop",
+    title: "Magento Ecommerce Development for a Telecom and IT Retailer",
+    type: "Magento · Ecommerce development · Ongoing support",
+    outcome: "A scalable storefront for a specialist catalog",
+    metric: "Magento commerce",
+    cover: "/images/the-telecom-shop-cover.svg",
+    brief:
+      "The Telecom Shop is an Australian specialist retailer for business telephone systems, headsets, conferencing equipment, networking, security, and related IT products. Swiftlyph supports the Magento storefront through ecommerce development and ongoing improvements across merchandising, product discovery, and conversion paths.",
+    challenge:
+      "The storefront brings together a large, technically detailed catalog serving both business buyers and individual customers. Shoppers need to move from broad equipment categories to compatible products, understand specifications and availability, compare options, and reach support content without adding friction to account, cart, and checkout journeys.",
+    approach: [
+      "Develop and refine Magento storefront experiences around a broad telecom, conferencing, networking, and IT catalog.",
+      "Improve category, search, merchandising, and product-detail paths so specialist equipment remains practical to discover and compare.",
+      "Support promotional content, customer accounts, cart, checkout, and operational integrations across the live ecommerce journey.",
+      "Ship scoped enhancements, quality checks, performance improvements, and ongoing maintenance without disrupting day-to-day trading.",
+    ],
+    outcomeBody:
+      "The Telecom Shop has a commerce platform that connects a specialist product range with the information and support customers need to purchase with confidence. Clear category journeys, detailed product pages, promotions, account tools, and service content work together across the storefront. Swiftlyph continues to support the site as its catalog, campaigns, and operational requirements evolve.",
+    stats: [
+      { label: "Engagement", value: "Ongoing" },
+      { label: "Platform", value: "Magento" },
+      { label: "Market", value: "Australia" },
+    ],
+    stack: [
+      "Magento",
+      "PHP",
+      "JavaScript",
+      "Ecommerce development",
+      "Storefront maintenance",
+    ],
+    website: "https://www.thetelecomshop.com/au/",
+    publishedAt: "2026-07-07",
+  },
+  {
     slug: "jovadi-shopify-storefront",
     service: "development",
     client: "Jovadi",
@@ -364,7 +400,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "carolina-fine-foods-astro-website",
-    service: "development",
+    service: "seo",
     client: "Carolina Fine Foods",
     title: "Astro Website Development for a Family-Owned Southern Restaurant",
     type: "Astro · Website development · Local SEO",
