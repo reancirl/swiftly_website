@@ -105,6 +105,80 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "connect-nigeria-marketplace-platform",
+    service: "development",
+    client: "Connect Nigeria",
+    title: "Marketplace Platform Development for Nigeria's Business Ecosystem",
+    type: "Next.js · Marketplace development · Business discovery",
+    outcome: "A unified discovery and lead-generation platform",
+    metric: "1.2M business records",
+    cover: "https://www.connectnigeria.com/og-image.png",
+    brief:
+      "Connect Nigeria is a national information and business-discovery platform bringing together company listings, quote requests, jobs, events, deals, cars, real estate, and editorial content. Swiftlyph developed a modern marketplace experience that helps people find trusted providers while giving Nigerian businesses practical ways to build visibility and win new customers.",
+    challenge:
+      "The platform needed to organize a large and varied information ecosystem without fragmenting the user journey. Consumers need fast search, filters, trusted business profiles, reviews, direct contact options, and competitive quotes, while business owners need onboarding, listing management, verification, lead-generation tools, advertising opportunities, and clear paths into premium services.",
+    approach: [
+      "Developed a responsive Next.js platform for business discovery across listings, jobs, events, deals, cars, real estate, and service categories.",
+      "Built searchable directory and profile experiences around categories, Nigerian states and local government areas, business details, reviews, contact actions, and verification signals.",
+      "Connected customer quote requests with vendor onboarding, matching, responses, and service-provider plans to support a two-sided lead-generation marketplace.",
+      "Integrated authentication, analytics, progressive-web-app capabilities, advertising surfaces, and the existing editorial publication into a cohesive product ecosystem.",
+    ],
+    outcomeBody:
+      "Connect Nigeria now provides a unified digital platform for discovering businesses and opportunities across Nigeria. Consumers can move from search to trusted profiles, direct enquiries, and competing quotes, while businesses can manage their presence, demonstrate credibility, and access new demand. The platform combines a large national directory with marketplace workflows, editorial discovery, advertising, and mobile-ready access in one extensible product.",
+    stats: [
+      { label: "Directory", value: "1.2M records" },
+      { label: "Platform", value: "Next.js" },
+      { label: "Market", value: "Nigeria" },
+    ],
+    stack: [
+      "Next.js",
+      "React",
+      "Auth.js",
+      "Vercel",
+      "WordPress",
+      "Progressive Web App",
+    ],
+    website: "https://www.connectnigeria.com",
+    publishedAt: "2026-07-08",
+  },
+  {
+    slug: "canwell-telehealth-platform",
+    service: "content",
+    client: "Canwell",
+    title: "Telehealth Platform Development for an Australian Healthcare Clinic",
+    type: "Telehealth · Platform development · Patient experience",
+    outcome: "A connected patient journey from booking to fulfilment",
+    metric: "End-to-end telehealth",
+    cover:
+      "https://www.canwell.com.au/images/v2/hero-natural-medicine.jpg",
+    brief:
+      "Canwell is an Australian telehealth platform that connects patients with AHPRA-registered practitioners for holistic healthcare and natural medicine consultations. Swiftlyph supports the digital experience across patient acquisition, account creation, appointment booking, consultation preparation, and access to prescribed products.",
+    challenge:
+      "The platform needs to make a regulated healthcare journey feel clear and convenient without compromising trust, privacy, or informed consent. Marketing pages, eligibility guidance, patient registration, practitioner availability, consultation forms, reminders, prescriptions, payments, and pharmacy fulfilment all need to work as one coherent experience across public and authenticated surfaces.",
+    approach: [
+      "Develop and refine the patient-facing platform across registration, secure account access, appointment booking, and consultation preparation.",
+      "Connect public treatment, practitioner, pricing, and eligibility content with clear paths into the authenticated patient journey.",
+      "Support operational workflows around patient forms, consent, appointment communications, prescriptions, payments, and pharmacy fulfilment.",
+      "Ship ongoing platform improvements with careful attention to responsive usability, privacy, healthcare compliance, and live-service reliability.",
+    ],
+    outcomeBody:
+      "Canwell has an end-to-end digital healthcare experience that helps patients move from learning about treatment options to booking a practitioner and managing the next steps of care. Public information, account access, appointment workflows, consultation preparation, and prescription fulfilment work together in one platform. Swiftlyph continues to support the experience as Canwell expands its services and patient journeys.",
+    stats: [
+      { label: "Market", value: "Australia" },
+      { label: "Product", value: "Telehealth" },
+      { label: "Scope", value: "Platform support" },
+    ],
+    stack: [
+      "Laravel",
+      "JavaScript",
+      "Telehealth workflows",
+      "Patient experience",
+      "Platform maintenance",
+    ],
+    website: "https://www.canwell.com.au",
+    publishedAt: "2026-07-08",
+  },
+  {
     slug: "the-telecom-shop-magento-commerce",
     service: "development",
     client: "The Telecom Shop",

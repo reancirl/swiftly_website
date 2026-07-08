@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
         hostname: "symptomsweb.com",
         pathname: "/logo.png",
       },
+      {
+        protocol: "https",
+        hostname: "www.canwell.com.au",
+        pathname: "/images/v2/hero-natural-medicine.jpg",
+      },
+      {
+        protocol: "https",
+        hostname: "www.connectnigeria.com",
+        pathname: "/og-image.png",
+      },
     ],
   },
 };
