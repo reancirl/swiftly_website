@@ -53,8 +53,7 @@ export function ContactForm() {
         <GoldDivider width="short" className="mt-6" />
         <p className="mt-6 text-ink-muted leading-relaxed max-w-md">
           A Swiftly principal will read your note and reply inside two business
-          days. If your project is urgent, reply directly to the confirmation
-          email and let us know.
+          days. If your project is urgent, email us directly and let us know.
         </p>
       </div>
     );
