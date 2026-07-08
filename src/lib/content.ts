@@ -105,6 +105,45 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "ncmc-school-management-system",
+    service: "development",
+    client: "North Central Mindanao College",
+    title: "School Management Information System for a Multi-Level College",
+    type: "Laravel · School management platform · Student services",
+    outcome: "A connected portal from admission to payment",
+    metric: "Elementary to college",
+    cover: "/images/ncmc-cover-hq.png",
+    coverFit: "contain",
+    coverBackground: "light",
+    brief:
+      "North Central Mindanao College serves students from elementary through tertiary education in Lanao del Norte. Swiftlyph developed a school management information system that brings student access, pre-registration, enrolment preparation, academic schedules, payments, and scholarship workflows into one online portal.",
+    challenge:
+      "The college needed to move high-volume administrative journeys beyond in-person queues and disconnected forms. New and returning students require different registration paths, while admissions, the registrar, accounting, and scholarship teams need dependable information across education levels without making routine school processes difficult to complete on mobile devices.",
+    approach: [
+      "Built a Laravel-based portal with authenticated student access and role-aware school management workflows.",
+      "Developed pre-registration and pre-enrolment journeys for elementary, junior high school, senior high school, and college applicants.",
+      "Connected academic calendars, subject-load checks, student records, online payment submissions, and confirmation workflows around day-to-day school operations.",
+      "Added scholarship applications, password recovery, responsive interfaces, validation, and links to the college website and alumni portal.",
+    ],
+    outcomeBody:
+      "NCMC has a centralized digital service layer for the administrative journeys students use most. Applicants can begin registration online, returning students can prepare for enrolment, and authenticated users can access schedules and submit payment information without relying entirely on campus queues. The platform also provides foundations for scholarship processing, alumni services, and continued operational improvements.",
+    stats: [
+      { label: "Levels", value: "4" },
+      { label: "Platform", value: "Laravel" },
+      { label: "Scope", value: "Student services" },
+    ],
+    stack: [
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "Bootstrap",
+      "jQuery",
+      "Cloudflare",
+    ],
+    website: "https://ncmcmaranding.com/login",
+    publishedAt: "2026-07-08",
+  },
+  {
     slug: "connect-nigeria-marketplace-platform",
     service: "development",
     client: "Connect Nigeria",
