@@ -5,6 +5,8 @@ import { z } from "zod";
 
 const CONTACT_RECIPIENT = "reancirl@gmail.com";
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const TURNSTILE_ENDPOINT =
+  "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
 const serviceLabels = {
   tech: "Development",
@@ -43,6 +45,7 @@ const ContactSchema = z.object({
     .string()
     .min(20, "Please give us a bit more context — at least 20 characters.")
     .max(4000),
+  turnstileToken: z.string().min(1, "Please complete the security check."),
   // honeypot
   website: z.string().max(0).optional(),
 });
@@ -68,6 +71,38 @@ function escapeHtml(value: string) {
   );
 }
 
+async function verifyTurnstile(token: string) {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+
+  if (!secret) {
+    throw new Error("TURNSTILE_SECRET_KEY is not configured.");
+  }
+
+  const response = await fetch(TURNSTILE_ENDPOINT, {
+    method: "POST",
+    body: new URLSearchParams({
+      secret,
+      response: token,
+    }),
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Turnstile verification request failed.");
+  }
+
+  const result = (await response.json()) as {
+    success: boolean;
+    "error-codes"?: string[];
+  };
+
+  if (!result.success) {
+    console.error("[contact] Turnstile failed", result["error-codes"]);
+    return false;
+  }
+
+  return true;
+}
 async function sendInquiry(data: z.infer<typeof ContactSchema>) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -150,6 +185,7 @@ export async function submitContact(
     service: String(formData.get("service") ?? ""),
     budget: String(formData.get("budget") ?? ""),
     message: String(formData.get("message") ?? ""),
+    turnstileToken: String(formData.get("cf-turnstile-response") ?? ""),
     website: String(formData.get("website") ?? ""),
   };
 
@@ -173,9 +209,19 @@ export async function submitContact(
     return { status: "ok" };
   }
 
-  try {
-    await sendInquiry(parsed.data);
-  } catch (error) {
+ try {
+  const captchaOk = await verifyTurnstile(parsed.data.turnstileToken);
+
+  if (!captchaOk) {
+    return {
+      status: "error",
+      message: "Please complete the security check and try again.",
+      values: raw,
+    };
+  }
+
+  await sendInquiry(parsed.data);
+} catch (error) {
     console.error(
       "[contact] failed to deliver inquiry",
       error instanceof Error ? error.message : "Unknown error",
