@@ -7,6 +7,7 @@ import { GoldDivider } from "@/components/brand/GoldDivider";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { CTABand } from "@/components/sections/CTABand";
 import { CaseStudyCard } from "@/components/sections/CaseStudyCard";
+import { ProjectScrollReveal } from "@/components/sections/ProjectScrollReveal";
 import { services, caseStudies, faqs } from "@/lib/content";
 import { SITE } from "@/lib/utils";
 
@@ -188,7 +189,9 @@ export default function ServicesPage() {
                             Featured {service.title} project
                           </p>
                         </div>
-                        <CaseStudyCard study={featuredProject} />
+                        <ProjectScrollReveal>
+                          <CaseStudyCard study={featuredProject} />
+                        </ProjectScrollReveal>
                         <p className="mt-5 border-l-2 border-gold-base pl-4 font-serif italic leading-relaxed text-ink-muted">
                           {service.short}
                         </p>

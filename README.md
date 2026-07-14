@@ -16,6 +16,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Contact form email
+
+Contact inquiries are delivered to `reancirl@gmail.com` through the Resend API.
+Configure these server-only environment variables locally and in the deployment:
+
+```bash
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_FROM_EMAIL="Swiftlyph Contact <website@swiftlyph.com>"
+```
+
+`CONTACT_FROM_EMAIL` must use a domain verified in Resend. If it is omitted,
+the integration uses Resend's onboarding sender, which is suitable only for
+initial testing with the email address associated with the Resend account.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
