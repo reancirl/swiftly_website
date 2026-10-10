@@ -8,21 +8,21 @@ const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const TURNSTILE_ENDPOINT =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
-const serviceLabels = {
-  tech: "Development",
-  seo: "SEO strategy",
-  content: "Content production",
-  all: "All three",
+const engagementLabels: Record<string, string> = {
+  custom: "Custom Software Development",
+  subscription: "Development Subscription",
+  fde: "Forward Deployed Engineering",
   unsure: "Not sure yet",
-} as const;
+};
 
-const budgetLabels = {
-  "under-15k": "Under $15k",
-  "15k-40k": "$15k – $40k",
-  "40k-100k": "$40k – $100k",
-  "100k-plus": "$100k+",
+const budgetLabels: Record<string, string> = {
+  subscription: "Subscription — $1,498/mo",
+  "under-15k": "Custom — under $15k",
+  "15k-40k": "Custom — $15k – $40k",
+  "40k-100k": "Custom — $40k – $100k",
+  "100k-plus": "Custom — $100k+",
   unsure: "Not sure yet",
-} as const;
+};
 
 const ContactSchema = z.object({
   name: z.string().min(2, "Please enter your name.").max(120),
@@ -104,14 +104,15 @@ async function verifyTurnstile(token: string) {
 
   return true;
 }
+
 async function sendInquiry(data: z.infer<typeof ContactSchema>) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     throw new Error("RESEND_API_KEY is not configured.");
   }
 
-  const service = serviceLabels[data.service];
-  const budget = budgetLabels[data.budget];
+  const engagement = engagementLabels[data.engagement] ?? data.engagement;
+  const budget = budgetLabels[data.budget] ?? data.budget;
   const company = data.company || "Not provided";
   const subjectCompany = data.company ? ` — ${data.company}` : "";
   const from =
@@ -124,7 +125,7 @@ async function sendInquiry(data: z.infer<typeof ContactSchema>) {
     `Name: ${data.name}`,
     `Email: ${data.email}`,
     `Company: ${company}`,
-    `Service: ${service}`,
+    `Engagement: ${engagement}`,
     `Budget: ${budget}`,
     "",
     "Project details:",
@@ -139,7 +140,7 @@ async function sendInquiry(data: z.infer<typeof ContactSchema>) {
           <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf; font-weight: 700;">Name</td><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf;">${escapeHtml(data.name)}</td></tr>
           <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf; font-weight: 700;">Email</td><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf;"><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></td></tr>
           <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf; font-weight: 700;">Company</td><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf;">${escapeHtml(company)}</td></tr>
-          <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf; font-weight: 700;">Service</td><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf;">${escapeHtml(service)}</td></tr>
+          <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf; font-weight: 700;">Engagement</td><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf;">${escapeHtml(engagement)}</td></tr>
           <tr><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf; font-weight: 700;">Budget</td><td style="padding: 8px 12px; border-bottom: 1px solid #e6dfcf;">${escapeHtml(budget)}</td></tr>
         </tbody>
       </table>
@@ -158,7 +159,7 @@ async function sendInquiry(data: z.infer<typeof ContactSchema>) {
       from,
       to: [CONTACT_RECIPIENT],
       reply_to: data.email,
-      subject: `New inquiry: ${service}${subjectCompany}`,
+      subject: `New inquiry: ${engagement}${subjectCompany}`,
       text,
       html,
     }),
@@ -210,14 +211,30 @@ export async function submitContact(
     return { status: "ok" };
   }
 
-  // In a real deployment this is where we'd call an email/CRM provider.
-  // For now we log on the server so the action is verifiably executed.
-  console.info("[contact] new inquiry", {
-    name: parsed.data.name,
-    email: parsed.data.email,
-    engagement: parsed.data.engagement,
-    budget: parsed.data.budget,
-  });
+  try {
+    const captchaOk = await verifyTurnstile(parsed.data.turnstileToken);
+
+    if (!captchaOk) {
+      return {
+        status: "error",
+        message: "Please complete the security check and try again.",
+        values: raw,
+      };
+    }
+
+    await sendInquiry(parsed.data);
+  } catch (error) {
+    console.error(
+      "[contact] failed to deliver inquiry",
+      error instanceof Error ? error.message : "Unknown error",
+    );
+    return {
+      status: "error",
+      message:
+        "We couldn't send your inquiry right now. Please try again or email us directly.",
+      values: raw,
+    };
+  }
 
   return { status: "ok" };
 }
