@@ -60,6 +60,10 @@ export default async function CaseStudyPage({
   const idx = caseStudies.findIndex((s) => s.slug === slug);
   const next = caseStudies[(idx + 1) % caseStudies.length];
   const containedCover = study.coverFit === "contain";
+  const lightCover = study.coverBackground === "light";
+  const coverUrl = study.cover.startsWith("http")
+    ? study.cover
+    : `${SITE.url}${study.cover}`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -87,7 +91,7 @@ export default async function CaseStudyPage({
     headline: study.title,
     description: study.brief,
     datePublished: study.publishedAt,
-    image: `${SITE.url}${study.cover}`,
+    image: coverUrl,
     author: { "@type": "Organization", name: SITE.name, url: SITE.url },
     publisher: {
       "@type": "Organization",
@@ -114,7 +118,7 @@ export default async function CaseStudyPage({
               className="inline-flex items-center gap-2 text-sm text-emerald-mid hover:text-emerald-deep"
             >
               <ArrowLeft size={14} />
-              All work
+              All Work
             </Link>
             <p className="mt-8 label-eyebrow gold-gradient-text">
               {study.type}
@@ -134,7 +138,11 @@ export default async function CaseStudyPage({
             <div
               className={cn(
                 "relative aspect-[16/10] rounded-sm border border-gold-base/30 overflow-hidden",
-                containedCover ? "bg-[#050914]" : "bg-emerald-soft",
+                containedCover
+                  ? lightCover
+                    ? "bg-white"
+                    : "bg-[#050914]"
+                  : "bg-emerald-soft",
               )}
             >
               <Image
@@ -155,7 +163,7 @@ export default async function CaseStudyPage({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               <div className="lg:col-span-8">
                 <h2 className="font-serif text-2xl md:text-3xl text-emerald-deep tracking-tightish">
-                  The challenge
+                  The Challenge
                 </h2>
                 <GoldDivider width="short" className="mt-3" />
                 <p className="mt-6 text-lg leading-relaxed text-ink prose-swiftly">
@@ -163,7 +171,7 @@ export default async function CaseStudyPage({
                 </p>
 
                 <h2 className="mt-16 font-serif text-2xl md:text-3xl text-emerald-deep tracking-tightish">
-                  The approach
+                  The Approach
                 </h2>
                 <GoldDivider width="short" className="mt-3" />
                 <ol className="mt-6 space-y-5 list-none">
@@ -178,7 +186,7 @@ export default async function CaseStudyPage({
                 </ol>
 
                 <h2 className="mt-16 font-serif text-2xl md:text-3xl text-emerald-deep tracking-tightish">
-                  The outcome
+                  The Outcome
                 </h2>
                 <GoldDivider width="short" className="mt-3" />
                 <p className="mt-6 text-lg leading-relaxed text-ink">
@@ -269,7 +277,7 @@ export default async function CaseStudyPage({
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                 <div>
                   <p className="label-eyebrow gold-gradient-text">
-                    Next case study
+                    Next Case Study
                   </p>
                   <h2 className="mt-3 font-serif text-2xl md:text-4xl text-emerald-deep tracking-display max-w-xl leading-[1.15]">
                     {next.title}

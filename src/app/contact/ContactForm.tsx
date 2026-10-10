@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import Script from "next/script";
 import { ArrowRight } from "lucide-react";
 import { submitContact, type ContactState } from "./actions";
 import { Input, Textarea, Select, Label } from "@/components/ui/Input";
@@ -9,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { GoldDivider } from "@/components/brand/GoldDivider";
 
 const initial: ContactState = { status: "idle" };
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -59,8 +61,7 @@ export function ContactForm({
         <GoldDivider width="short" className="mt-6" />
         <p className="mt-6 text-ink-muted leading-relaxed max-w-md">
           A Swiftly principal will read your note and reply inside two business
-          days. If your project is urgent, reply directly to the confirmation
-          email and let us know.
+          days. If your project is urgent, email us directly and let us know.
         </p>
       </div>
     );
@@ -177,14 +178,39 @@ export function ContactForm({
         />
       </div>
 
-      {state.message && (
-        <p
-          role="alert"
-          className="text-sm text-red-700 border border-red-700/30 rounded-sm px-4 py-3"
-        >
-          {state.message}
-        </p>
-      )}
+      
+      
+     <div>
+  {turnstileSiteKey ? (
+    <>
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        strategy="afterInteractive"
+        async
+        defer
+      />
+      <div
+        className="cf-turnstile"
+        data-sitekey={turnstileSiteKey}
+        data-theme="light"
+      />
+      <FieldError>{errs.turnstileToken}</FieldError>
+    </>
+  ) : (
+    <p className="text-sm text-red-700 border border-red-700/30 rounded-sm px-4 py-3">
+      Security check is not configured.
+    </p>
+  )}
+</div>
+
+{state.message && (
+  <p
+    role="alert"
+    className="text-sm text-red-700 border border-red-700/30 rounded-sm px-4 py-3"
+  >
+    {state.message}
+  </p>
+)}
 
       <div className="pt-2">
         <SubmitButton />

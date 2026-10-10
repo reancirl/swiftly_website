@@ -22,9 +22,9 @@ export const SITE = {
     display: "$1,498/month",
   },
   social: {
-    facebook: "https://facebook.com/swiftlyph",
-    instagram: "https://instagram.com/swiftlyph",
-    linkedin: "https://linkedin.com/company/swiftlyph",
+    facebook: "https://www.facebook.com/swiftlyph6022",
+    instagram: "https://www.instagram.com/swiftlyph_/",
+    linkedin: "https://www.linkedin.com/company/swiftly-ph/",
   },
   verse: {
     text: "The least of you will become a thousand, the smallest a mighty nation. I am the Lord; in its time I will do this swiftly.",

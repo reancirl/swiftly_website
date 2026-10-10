@@ -172,6 +172,7 @@ export function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    aria-current={active ? "page" : undefined}
                     className={cn(
                       "relative text-sm font-medium tracking-tight transition-colors py-2",
                       darkBg

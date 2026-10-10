@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { GoldDivider } from "@/components/brand/GoldDivider";
-import { CaseStudyCard } from "@/components/sections/CaseStudyCard";
+import { WorkGallery } from "@/components/sections/WorkGallery";
 import { CTABand } from "@/components/sections/CTABand";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { caseStudies } from "@/lib/content";
@@ -58,21 +58,7 @@ export default function WorkPage() {
 
       <section className="pb-20 md:pb-28">
         <Container size="xl">
-          {caseStudies.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {caseStudies.map((s) => (
-                <CaseStudyCard key={s.slug} study={s} />
-              ))}
-            </div>
-          ) : (
-            <div className="border-y border-gold-base/30 py-12">
-              <p className="label-eyebrow text-emerald-mid">No public work yet</p>
-              <p className="mt-4 max-w-2xl text-ink-muted leading-relaxed">
-                We will add real case studies here when they are approved for
-                publication.
-              </p>
-            </div>
-          )}
+          <WorkGallery studies={caseStudies} />
         </Container>
       </section>
 

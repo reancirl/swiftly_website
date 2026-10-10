@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function CaseStudyCard({ study }: { study: CaseStudy }) {
   const containedCover = study.coverFit === "contain";
+  const lightCover = study.coverBackground === "light";
 
   return (
     <Link
@@ -16,7 +17,11 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
         <div
           className={cn(
             "relative aspect-[16/10] overflow-hidden",
-            containedCover ? "bg-[#050914]" : "bg-emerald-soft",
+            containedCover
+              ? lightCover
+                ? "bg-white"
+                : "bg-[#050914]"
+              : "bg-emerald-soft",
           )}
         >
           <Image

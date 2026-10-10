@@ -37,7 +37,7 @@ const breadcrumbSchema = {
 
 const team = [
   {
-    name: "Rean Cirl Balaba",
+    name: "Reancirl Balaba",
     role: "Principal · Engineering",
     bio: "Leads technical builds and architecture. Years across product engineering, performance work, and growth-side platforms.",
   },
