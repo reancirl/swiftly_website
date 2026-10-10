@@ -3,17 +3,34 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/Button";
 import { Container } from "./Container";
 
+const SERVICE_LINKS = [
+  { href: "/services", label: "Overview", desc: "All three, compared" },
+  { href: "/custom-development", label: "Custom Development", desc: "We build it for you" },
+  { href: "/subscription", label: "Development Subscription", desc: "We build continuously" },
+  {
+    href: "/forward-deployed-engineering",
+    label: "Forward Deployed Engineering",
+    desc: "We build alongside you",
+  },
+];
+
+const SERVICE_PREFIXES = [
+  "/services",
+  "/custom-development",
+  "/subscription",
+  "/forward-deployed-engineering",
+];
+
 const NAV_LINKS = [
-  { href: "/services", label: "Services" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
+  { href: "/blog", label: "Journal" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -21,6 +38,9 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [servicesOpen, setServicesOpen] = React.useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = React.useState(false);
+  const servicesRef = React.useRef<HTMLLIElement | null>(null);
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -36,7 +56,31 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
+  // Close the services dropdown on outside click / Escape.
+  React.useEffect(() => {
+    if (!servicesOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setServicesOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [servicesOpen]);
+
   const closeMobile = React.useCallback(() => setMobileOpen(false), []);
+  const servicesActive = SERVICE_PREFIXES.some((p) => pathname.startsWith(p));
+  // On the homepage, the hero is a full emerald band — let the navbar blend
+  // into it at the top, then become a solid emerald bar on scroll.
+  const onDarkHero = pathname === "/" && !scrolled;
+  const darkBg = scrolled || onDarkHero;
 
   return (
     <header
@@ -44,7 +88,9 @@ export function Navbar() {
         "sticky top-0 z-50 transition-all duration-300",
         scrolled
           ? "bg-emerald-deep/95 backdrop-blur-md border-b border-gold-base/20"
-          : "bg-cream/80 backdrop-blur-sm border-b border-transparent",
+          : onDarkHero
+            ? "bg-emerald-deep border-b border-transparent"
+            : "bg-cream/80 backdrop-blur-sm border-b border-transparent",
       )}
     >
       <Container size="xl">
@@ -52,30 +98,87 @@ export function Navbar() {
           aria-label="Primary"
           className="flex h-20 md:h-24 items-center justify-between"
         >
-          <Link
-            href="/"
-            aria-label="Swiftlyph — home"
-            className="flex items-center"
-          >
-            <Logo variant={scrolled ? "dark" : "light"} size={56} priority />
+          <Link href="/" aria-label="Swiftlyph — home" className="flex items-center">
+            <Logo variant={darkBg ? "dark" : "light"} size={56} priority />
           </Link>
 
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden md:flex items-center gap-7">
+            {/* Services dropdown */}
+            <li
+              ref={servicesRef}
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                type="button"
+                aria-expanded={servicesOpen}
+                aria-haspopup="true"
+                onClick={() => setServicesOpen((v) => !v)}
+                className={cn(
+                  "relative inline-flex items-center gap-1 text-sm font-medium tracking-tight transition-colors py-2",
+                  darkBg
+                    ? "text-cream hover:text-gold-light"
+                    : "text-emerald-deep hover:text-emerald-mid",
+                  servicesActive &&
+                    "after:content-[''] after:absolute after:left-0 after:right-4 after:-bottom-0.5 after:h-px after:gold-gradient",
+                )}
+              >
+                Services
+                <ChevronDown
+                  size={14}
+                  className={cn(
+                    "transition-transform duration-200",
+                    servicesOpen && "rotate-180",
+                  )}
+                />
+              </button>
+
+              {servicesOpen && (
+                <div className="absolute left-0 top-full pt-3">
+                  <ul className="w-80 rounded-sm border border-gold-base/30 bg-cream p-2 shadow-[0_24px_60px_-28px_rgba(0,98,65,0.5)]">
+                    {SERVICE_LINKS.map((s) => {
+                      const active = pathname === s.href;
+                      return (
+                        <li key={s.href}>
+                          <Link
+                            href={s.href}
+                            onClick={() => setServicesOpen(false)}
+                            className={cn(
+                              "block rounded-sm px-4 py-3 transition-colors",
+                              active
+                                ? "bg-emerald-soft"
+                                : "hover:bg-emerald-soft/60",
+                            )}
+                          >
+                            <span className="block text-sm font-medium text-emerald-deep">
+                              {s.label}
+                            </span>
+                            <span className="block text-xs text-ink-muted">
+                              {s.desc}
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </li>
+
             {NAV_LINKS.map((link) => {
-              const active =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(link.href);
+              const active = pathname.startsWith(link.href);
               return (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     className={cn(
                       "relative text-sm font-medium tracking-tight transition-colors py-2",
-                      scrolled
+                      darkBg
                         ? "text-cream hover:text-gold-light"
                         : "text-emerald-deep hover:text-emerald-mid",
-                      active && "after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:gold-gradient",
+                      active &&
+                        "after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:gold-gradient",
                     )}
                   >
                     {link.label}
@@ -88,10 +191,10 @@ export function Navbar() {
           <div className="hidden md:block">
             <Button
               href="/contact"
-              variant={scrolled ? "gold" : "primary"}
+              variant={darkBg ? "gold" : "primary"}
               size="sm"
             >
-              Start a project
+              Get started
             </Button>
           </div>
 
@@ -102,7 +205,7 @@ export function Navbar() {
             aria-expanded={mobileOpen}
             className={cn(
               "md:hidden inline-flex items-center justify-center h-10 w-10 rounded-sm",
-              scrolled ? "text-cream" : "text-emerald-deep",
+              darkBg ? "text-cream" : "text-emerald-deep",
             )}
           >
             <Menu size={22} />
@@ -128,28 +231,59 @@ export function Navbar() {
               <X size={22} />
             </button>
           </div>
-          <ul className="flex-1 px-6 pt-12 space-y-6 overflow-y-auto">
-            {NAV_LINKS.map((link) => {
-              const active =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(link.href);
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={closeMobile}
-                    className={cn(
-                      "block font-serif text-3xl tracking-tightish",
-                      active ? "gold-gradient-text" : "text-cream",
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="flex-1 px-6 pt-10 overflow-y-auto">
+            {/* Services group */}
+            <button
+              type="button"
+              aria-expanded={mobileServicesOpen}
+              onClick={() => setMobileServicesOpen((v) => !v)}
+              className="w-full flex items-center justify-between font-serif text-3xl tracking-tightish text-cream"
+            >
+              Services
+              <ChevronDown
+                size={22}
+                className={cn(
+                  "text-gold-light transition-transform",
+                  mobileServicesOpen && "rotate-180",
+                )}
+              />
+            </button>
+            {mobileServicesOpen && (
+              <ul className="mt-4 mb-2 space-y-3 border-l border-gold-base/30 pl-5">
+                {SERVICE_LINKS.map((s) => (
+                  <li key={s.href}>
+                    <Link
+                      href={s.href}
+                      onClick={closeMobile}
+                      className="block text-lg text-cream/90 hover:text-gold-light"
+                    >
+                      {s.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            <ul className="mt-8 space-y-6">
+              {NAV_LINKS.map((link) => {
+                const active = pathname.startsWith(link.href);
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={closeMobile}
+                      className={cn(
+                        "block font-serif text-3xl tracking-tightish",
+                        active ? "gold-gradient-text" : "text-cream",
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
           <div className="px-6 pb-10 pt-6 border-t border-gold-base/20">
             <Button
               href="/contact"
@@ -158,7 +292,7 @@ export function Navbar() {
               className="w-full"
               onClick={closeMobile}
             >
-              Start a project
+              Get started
             </Button>
           </div>
         </div>

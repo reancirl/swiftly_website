@@ -28,17 +28,22 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: `${SITE.name} — Development, SEO & content built swiftly`,
+    default: `${SITE.name} — ${SITE.tagline}`,
     template: `%s — ${SITE.name}`,
   },
   description: SITE.description,
   applicationName: SITE.name,
   keywords: [
-    "Philippine web development agency",
-    "SEO agency Philippines",
-    "Next.js development",
-    "content marketing",
-    "Iligan tech agency",
+    "software development agency",
+    "software development company Philippines",
+    "custom software development",
+    "development subscription",
+    "software development as a service",
+    "forward deployed engineering",
+    "embedded software engineering",
+    "AI-assisted software development",
+    "senior-led software engineering",
+    "Iligan software studio",
     "Swiftly",
   ],
   authors: [{ name: SITE.name, url: SITE.url }],
@@ -50,7 +55,7 @@ export const metadata: Metadata = {
     locale: "en_PH",
     url: SITE.url,
     siteName: SITE.name,
-    title: `${SITE.name} — Development, SEO & content built swiftly`,
+    title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
     images: [
       {
@@ -63,7 +68,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} — Development, SEO & content built swiftly`,
+    title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.description,
     images: ["/opengraph-image"],
   },
@@ -88,7 +93,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: SITE.name,
   url: SITE.url,
-  logo: `${SITE.url}/logo/swiftly-fb-profile.svg`,
+  logo: `${SITE.url}/logo/swiftly-favicon.svg`,
   description: SITE.description,
   email: SITE.email,
   address: {
@@ -97,6 +102,27 @@ const organizationSchema = {
     addressCountry: "PH",
   },
   sameAs: [SITE.social.facebook, SITE.social.instagram, SITE.social.linkedin],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Engineering engagement models",
+    itemListElement: [
+      {
+        "@type": "Service",
+        name: "Custom Software Development",
+        url: `${SITE.url}/custom-development`,
+      },
+      {
+        "@type": "Service",
+        name: "Development Subscription",
+        url: `${SITE.url}/subscription`,
+      },
+      {
+        "@type": "Service",
+        name: "Forward Deployed Engineering",
+        url: `${SITE.url}/forward-deployed-engineering`,
+      },
+    ],
+  },
 };
 
 const websiteSchema = {

@@ -152,3 +152,77 @@ body {
 .fade-up {
   animation: fade-up 0.7s ease-out both;
 }
+
+/* ------------------------------------------------------------------ */
+/* Engagement-model motifs — playful hover, respectful of reduced motion */
+/* ------------------------------------------------------------------ */
+
+.motif-dot,
+.motif-active,
+.motif-core {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes motif-travel {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(92px, -14px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes motif-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.12);
+    }
+  }
+
+  @keyframes motif-rise {
+    0%,
+    100% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(1.14);
+    }
+  }
+
+  .group:hover .motif-dot {
+    animation: motif-travel 1.6s ease-in-out infinite;
+  }
+
+  .group:hover .motif-core {
+    animation: motif-pulse 1.4s ease-in-out infinite;
+  }
+
+  .group:hover .motif-active {
+    transform-origin: bottom center;
+    animation: motif-rise 1.4s ease-in-out infinite;
+  }
+}
+
+/* A restrained gold underline that sweeps in on hover/focus. */
+.link-sweep {
+  background-image: linear-gradient(90deg, #d4af37, #f4e5a1);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1.5px;
+  transition: background-size 0.4s ease;
+}
+
+.link-sweep:hover,
+.link-sweep:focus-visible {
+  background-size: 100% 1.5px;
+}

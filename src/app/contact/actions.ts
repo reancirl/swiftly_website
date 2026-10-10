@@ -6,18 +6,19 @@ const ContactSchema = z.object({
   name: z.string().min(2, "Please enter your name.").max(120),
   email: z.string().email("Please enter a valid email address."),
   company: z.string().max(160).optional().or(z.literal("")),
-  service: z.enum(["tech", "seo", "content", "all", "unsure"], {
-    message: "Pick the service that fits best.",
+  engagement: z.enum(["custom", "subscription", "fde", "unsure"], {
+    message: "Tell us which engagement fits best.",
   }),
   budget: z.enum(
     [
+      "subscription",
       "under-15k",
       "15k-40k",
       "40k-100k",
       "100k-plus",
       "unsure",
     ],
-    { message: "Pick a budget range." },
+    { message: "Pick a budget or engagement." },
   ),
   message: z
     .string()
@@ -42,7 +43,7 @@ export async function submitContact(
     name: String(formData.get("name") ?? ""),
     email: String(formData.get("email") ?? ""),
     company: String(formData.get("company") ?? ""),
-    service: String(formData.get("service") ?? ""),
+    engagement: String(formData.get("engagement") ?? ""),
     budget: String(formData.get("budget") ?? ""),
     message: String(formData.get("message") ?? ""),
     website: String(formData.get("website") ?? ""),
@@ -73,7 +74,7 @@ export async function submitContact(
   console.info("[contact] new inquiry", {
     name: parsed.data.name,
     email: parsed.data.email,
-    service: parsed.data.service,
+    engagement: parsed.data.engagement,
     budget: parsed.data.budget,
   });
 

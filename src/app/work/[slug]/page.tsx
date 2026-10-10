@@ -94,7 +94,7 @@ export default async function CaseStudyPage({
       name: SITE.name,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE.url}/logo/swiftly-fb-profile.svg`,
+        url: `${SITE.url}/logo/swiftly-favicon.svg`,
       },
     },
     mainEntityOfPage: `${SITE.url}/work/${study.slug}`,
