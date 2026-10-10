@@ -40,10 +40,16 @@ function FieldError({ children }: { children?: string }) {
   );
 }
 
-export function ContactForm() {
+export function ContactForm({
+  defaultEngagement,
+}: {
+  defaultEngagement?: string;
+}) {
   const [state, formAction] = useActionState(submitContact, initial);
   const errs = state.fieldErrors ?? {};
   const v = state.values ?? {};
+  const engagement = v.engagement ?? defaultEngagement ?? "";
+  const budget = v.budget ?? (defaultEngagement === "subscription" ? "subscription" : "");
 
   if (state.status === "ok") {
     return (
@@ -105,24 +111,23 @@ export function ContactForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <Label htmlFor="service">What do you need?</Label>
+          <Label htmlFor="engagement">How do you want to work with us?</Label>
           <Select
-            id="service"
-            name="service"
+            id="engagement"
+            name="engagement"
             required
-            defaultValue={v.service ?? ""}
-            aria-invalid={Boolean(errs.service)}
+            defaultValue={engagement}
+            aria-invalid={Boolean(errs.engagement)}
           >
             <option value="" disabled>
-              Select a service…
+              Select an engagement…
             </option>
-            <option value="tech">Development</option>
-            <option value="seo">SEO strategy</option>
-            <option value="content">Content production</option>
-            <option value="all">All three</option>
+            <option value="custom">Custom Software Development</option>
+            <option value="subscription">Development Subscription</option>
+            <option value="fde">Forward Deployed Engineering</option>
             <option value="unsure">Not sure yet</option>
           </Select>
-          <FieldError>{errs.service}</FieldError>
+          <FieldError>{errs.engagement}</FieldError>
         </div>
         <div>
           <Label htmlFor="budget">Budget</Label>
@@ -130,16 +135,17 @@ export function ContactForm() {
             id="budget"
             name="budget"
             required
-            defaultValue={v.budget ?? ""}
+            defaultValue={budget}
             aria-invalid={Boolean(errs.budget)}
           >
             <option value="" disabled>
               Select a range…
             </option>
-            <option value="under-15k">Under $15k</option>
-            <option value="15k-40k">$15k – $40k</option>
-            <option value="40k-100k">$40k – $100k</option>
-            <option value="100k-plus">$100k+</option>
+            <option value="subscription">Subscription — $1,498/mo</option>
+            <option value="under-15k">Custom — under $15k</option>
+            <option value="15k-40k">Custom — $15k – $40k</option>
+            <option value="40k-100k">Custom — $40k – $100k</option>
+            <option value="100k-plus">Custom — $100k+</option>
             <option value="unsure">Not sure yet</option>
           </Select>
           <FieldError>{errs.budget}</FieldError>

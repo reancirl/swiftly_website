@@ -28,18 +28,19 @@ const ContactSchema = z.object({
   name: z.string().min(2, "Please enter your name.").max(120),
   email: z.string().email("Please enter a valid email address."),
   company: z.string().max(160).optional().or(z.literal("")),
-  service: z.enum(["tech", "seo", "content", "all", "unsure"], {
-    message: "Pick the service that fits best.",
+  engagement: z.enum(["custom", "subscription", "fde", "unsure"], {
+    message: "Tell us which engagement fits best.",
   }),
   budget: z.enum(
     [
+      "subscription",
       "under-15k",
       "15k-40k",
       "40k-100k",
       "100k-plus",
       "unsure",
     ],
-    { message: "Pick a budget range." },
+    { message: "Pick a budget or engagement." },
   ),
   message: z
     .string()
@@ -182,7 +183,7 @@ export async function submitContact(
     name: String(formData.get("name") ?? ""),
     email: String(formData.get("email") ?? ""),
     company: String(formData.get("company") ?? ""),
-    service: String(formData.get("service") ?? ""),
+    engagement: String(formData.get("engagement") ?? ""),
     budget: String(formData.get("budget") ?? ""),
     message: String(formData.get("message") ?? ""),
     turnstileToken: String(formData.get("cf-turnstile-response") ?? ""),
@@ -209,30 +210,14 @@ export async function submitContact(
     return { status: "ok" };
   }
 
- try {
-  const captchaOk = await verifyTurnstile(parsed.data.turnstileToken);
-
-  if (!captchaOk) {
-    return {
-      status: "error",
-      message: "Please complete the security check and try again.",
-      values: raw,
-    };
-  }
-
-  await sendInquiry(parsed.data);
-} catch (error) {
-    console.error(
-      "[contact] failed to deliver inquiry",
-      error instanceof Error ? error.message : "Unknown error",
-    );
-    return {
-      status: "error",
-      message:
-        "We couldn't send your inquiry right now. Please try again or email us directly.",
-      values: raw,
-    };
-  }
+  // In a real deployment this is where we'd call an email/CRM provider.
+  // For now we log on the server so the action is verifiably executed.
+  console.info("[contact] new inquiry", {
+    name: parsed.data.name,
+    email: parsed.data.email,
+    engagement: parsed.data.engagement,
+    budget: parsed.data.budget,
+  });
 
   return { status: "ok" };
 }

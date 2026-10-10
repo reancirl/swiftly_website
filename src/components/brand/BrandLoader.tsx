@@ -170,7 +170,7 @@ export function BrandLoader() {
           </span>
         </span>
         <span className="mt-3 text-[0.7rem] uppercase tracking-[0.18em] text-gold-light">
-          Development · SEO · Content
+          Great software · Built swiftly
         </span>
       </div>
     </div>

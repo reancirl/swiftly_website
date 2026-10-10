@@ -9,11 +9,18 @@ export const SITE = {
   name: "Swiftlyph",
   url: "https://swiftlyph.com",
   shortName: "Swiftly",
-  tagline: "Development · SEO · Content. Built swiftly.",
+  tagline: "Great software, built swiftly.",
+  eyebrow: "Software Engineering Studio · Philippines",
   description:
-    "Swiftlyph is a Philippine-based tech, SEO, and content agency. We build websites and growth systems that compound, with the discipline of senior engineering and the patience of long-form craft.",
+    "Swiftlyph is a Philippine-based software engineering studio. We build, improve, and scale software through thoughtful engineering and AI-assisted workflows — available as a custom build, a monthly development subscription, or embedded forward deployed engineering.",
   email: "hello@swiftlyph.com",
   location: "Iligan, Philippines",
+  price: {
+    amount: "$1,498",
+    currency: "USD",
+    period: "month",
+    display: "$1,498/month",
+  },
   social: {
     facebook: "https://www.facebook.com/swiftlyph6022",
     instagram: "https://www.instagram.com/swiftlyph_/",

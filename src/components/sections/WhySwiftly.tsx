@@ -1,23 +1,7 @@
 import { Container } from "@/components/layout/Container";
+import { GoldDivider } from "@/components/brand/GoldDivider";
 import { Reveal } from "@/components/brand/Reveal";
-
-const points = [
-  {
-    n: "01",
-    title: "Speed of execution",
-    body: "We work in two-week cycles and ship every Friday. There is no sprint that ends with a slide deck and no progress.",
-  },
-  {
-    n: "02",
-    title: "Engineering for compounding growth",
-    body: "Marketing sites are software. We treat them with the rigor of product engineering: clean architecture, observability, performance budgets, and tests.",
-  },
-  {
-    n: "03",
-    title: "Faith-rooted craftsmanship",
-    body: "We treat every project as work that should outlast the brief. Quiet care, honest timelines, and the patience to build things that hold up.",
-  },
-];
+import { whyPoints } from "@/lib/content";
 
 export function WhySwiftly() {
   return (
@@ -26,41 +10,43 @@ export function WhySwiftly() {
       className="py-20 md:py-28 bg-cream border-t border-gold-base/20"
     >
       <Container size="xl">
-        <Reveal className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-          <div className="lg:col-span-5">
-            <p className="label-eyebrow gold-gradient-text">Why Swiftly</p>
-            <h2
-              id="why-heading"
-              className="mt-4 font-serif text-3xl md:text-5xl tracking-display text-emerald-deep leading-[1.1]"
-            >
-              Built for the multiplication.
-            </h2>
-            <p className="mt-6 text-ink-muted leading-relaxed max-w-md">
-              The studio is small on purpose. Every engagement is led by a
-              principal who is on the work from kickoff to launch — there is no
-              junior handoff, no offshore translation layer.
-            </p>
-          </div>
-          <Reveal as="ol" stagger={0.08} className="lg:col-span-7 space-y-10">
-            {points.map((p) => (
-              <li
-                key={p.n}
-                className="grid grid-cols-[auto_1fr] gap-6 md:gap-10 pb-10 border-b border-gold-base/30 last:border-0 last:pb-0"
-              >
-                  <span className="font-serif text-3xl gold-gradient-text leading-none">
-                    {p.n}
-                  </span>
-                <div>
-                  <h3 className="font-serif text-2xl text-emerald-deep tracking-tightish">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 text-ink-muted leading-relaxed">
-                    {p.body}
-                  </p>
+        <Reveal className="max-w-2xl">
+          <p className="label-eyebrow gold-gradient-text">Why Swiftly</p>
+          <h2
+            id="why-heading"
+            className="mt-4 font-serif text-3xl md:text-5xl tracking-display text-emerald-deep leading-[1.1]"
+          >
+            A better way to ship software.
+          </h2>
+          <p className="mt-6 text-ink-muted leading-relaxed">
+            Senior engineering, predictable pricing, and a focused workstream —
+            delivered through a platform we build ourselves.
+          </p>
+        </Reveal>
+
+        <GoldDivider width="full" className="mt-12 opacity-50" />
+
+        <Reveal
+          as="ul"
+          stagger={0.06}
+          className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10"
+        >
+          {whyPoints.map((point) => {
+            const Icon = point.icon;
+            return (
+              <li key={point.title}>
+                <div className="flex items-center justify-center h-11 w-11 rounded-sm border border-gold-base/40 text-emerald-deep">
+                  <Icon size={19} strokeWidth={1.5} />
                 </div>
+                <h3 className="mt-5 font-serif text-xl text-emerald-deep tracking-tightish">
+                  {point.title}
+                </h3>
+                <p className="mt-3 text-ink-muted leading-relaxed">
+                  {point.body}
+                </p>
               </li>
-            ))}
-          </Reveal>
+            );
+          })}
         </Reveal>
       </Container>
     </section>

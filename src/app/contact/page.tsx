@@ -6,9 +6,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "./ContactForm";
 import { SITE } from "@/lib/utils";
 
-const title = "Contact — start a project with Swiftly";
+const title = "Contact — start with Swiftly";
 const description =
-  "Tell us about the work. Swiftly principals reply to every inquiry inside two business days. Iligan-based, working with teams worldwide.";
+  "Start a development subscription inquiry or discuss a custom project. A Swiftly principal reads every message and replies with a written response. Iligan-based, working with teams worldwide.";
 
 export const metadata: Metadata = {
   title,
@@ -47,7 +47,19 @@ const contactSchema = {
   },
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ engagement?: string }>;
+}) {
+  const { engagement } = await searchParams;
+  const defaultEngagement =
+    engagement === "subscription" ||
+    engagement === "custom" ||
+    engagement === "fde"
+      ? engagement
+      : undefined;
+
   return (
     <>
       <JsonLd data={breadcrumbSchema} id="contact-breadcrumb" />
@@ -60,8 +72,9 @@ export default function ContactPage() {
             Tell us about the work.
           </h1>
           <p className="mt-8 max-w-2xl text-lg md:text-xl text-ink-muted leading-relaxed">
-            Every inquiry is read by a Swiftly principal. We reply with a
-            written response inside two business days — not a calendar link.
+            A custom build, the development subscription, or forward deployed
+            engineering — tell us what you need. A Swiftly principal reads your
+            message and replies with a written response, not a calendar link.
           </p>
           <GoldDivider width="medium" className="mt-10" />
         </Container>
@@ -71,7 +84,7 @@ export default function ContactPage() {
         <Container size="xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20">
             <div className="lg:col-span-7">
-              <ContactForm />
+              <ContactForm defaultEngagement={defaultEngagement} />
             </div>
 
             <aside className="lg:col-span-5 space-y-10">

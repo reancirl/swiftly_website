@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Swiftlyph — tech, SEO, and content built swiftly";
+export const alt = "Swiftlyph — great software, built swiftly";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -54,7 +54,7 @@ export default function OpengraphImage() {
               display: "flex",
             }}
           >
-            Development · SEO · Content
+            Software Engineering Studio · Philippines
           </span>
         </div>
 
@@ -70,7 +70,7 @@ export default function OpengraphImage() {
               maxWidth: 1040,
             }}
           >
-            We build websites that move swiftly.
+            Great software, built swiftly.
           </div>
           <div
             style={{
@@ -83,7 +83,7 @@ export default function OpengraphImage() {
               letterSpacing: "-0.01em",
             }}
           >
-            swiftlyph — an Iligan-based studio for ambitious teams.
+            swiftlyph — a Philippine software engineering studio · custom · subscription · FDE
           </div>
         </div>
 

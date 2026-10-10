@@ -32,15 +32,20 @@ export function CTABand() {
             id="cta-heading"
             className="mt-5 font-serif text-4xl md:text-6xl tracking-display leading-[1.05] text-cream"
           >
-            Let&rsquo;s Build Something That Grows.
+            Have something worth building?
           </h2>
           <p className="mt-6 text-cream/85 max-w-xl leading-relaxed">
-            Tell us about the work. We&rsquo;ll come back inside two business days
-            with a written response — not a calendar link.
+            Tell us about the problem — not just the feature list. A Swiftly
+            principal reads every message and replies with a written response,
+            and we will point you to the engagement that actually fits.
           </p>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button href="/contact" variant="gold" size="lg">
-              Get in touch
+              Let&rsquo;s build what matters
+              <ArrowRight size={16} />
+            </Button>
+            <Button href="/services" variant="link" size="lg" className="text-cream hover:text-gold-light">
+              Compare how we work
               <ArrowRight size={16} />
             </Button>
           </div>

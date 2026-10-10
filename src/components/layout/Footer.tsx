@@ -55,30 +55,26 @@ const linkColumns = [
   {
     heading: "Services",
     links: [
-      { href: "/services#tech", label: "Development" },
-      { href: "/services#seo", label: "SEO strategy" },
-      { href: "/services#content", label: "Content production" },
+      { href: "/custom-development", label: "Custom Development" },
+      { href: "/subscription", label: "Development Subscription" },
+      { href: "/forward-deployed-engineering", label: "Forward Deployed Engineering" },
+      { href: "/services", label: "Compare all three" },
     ],
   },
   {
-    heading: "Work",
+    heading: "Studio",
     links: [
       { href: "/work", label: "Case studies" },
       { href: "/blog", label: "Journal" },
-    ],
-  },
-  {
-    heading: "Company",
-    links: [
       { href: "/about", label: "About" },
-      { href: "/contact", label: "Contact" },
     ],
   },
   {
-    heading: "Legal",
+    heading: "Get in touch",
     links: [
-      { href: "/legal/privacy", label: "Privacy" },
-      { href: "/legal/terms", label: "Terms" },
+      { href: "/contact?engagement=custom", label: "Discuss a project" },
+      { href: "/contact?engagement=fde", label: "FDE inquiry" },
+      { href: "/contact", label: "Contact" },
     ],
   },
 ];
@@ -134,7 +130,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-8">
+          <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {linkColumns.map((col) => (
               <div key={col.heading}>
                 <h2 className="label-eyebrow text-gold-light">{col.heading}</h2>
