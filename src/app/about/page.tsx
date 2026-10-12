@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { GoldDivider } from "@/components/brand/GoldDivider";
 import { VerseBlock } from "@/components/brand/VerseBlock";
@@ -35,11 +36,27 @@ const breadcrumbSchema = {
   ],
 };
 
-const team = [
+type TeamMember = {
+  name: string;
+  /** Faith name; optional. */
+  spiritualName?: string;
+  position: string;
+  /** Path under /public, e.g. "/images/team/reancirl.jpg". Optional — falls back to initials. */
+  image?: string;
+};
+
+const teamMembers: TeamMember[] = [
   {
     name: "Reancirl Balaba",
-    role: "Principal · Engineering",
-    bio: "Leads technical builds and architecture. Years across product engineering, performance work, and growth-side platforms.",
+    spiritualName: "Ambassador",
+    position: "Founder & Lead Builder",
+    image: "/images/team/reancirl-balaba-v2.jpg",
+  },
+  {
+    name: "Chermae Balaba",
+    spiritualName: "Courageous",
+    position: "Founder & Clinical Lead",
+    image: "/images/team/chermae-balaba.jpg",
   },
 ];
 
@@ -151,44 +168,49 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <ul className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {team.map((person) => (
-              <li
-                key={person.name}
-                className="border border-gold-base/30 rounded-sm p-7 bg-cream"
-              >
-                <div className="aspect-[4/5] mb-6 bg-emerald-soft border border-gold-base/30 rounded-sm flex items-center justify-center">
-                  <span className="font-serif text-5xl gold-gradient-text">
-                    {person.name
-                      .split(" ")
-                      .map((w) => w[0])
-                      .slice(0, 2)
-                      .join("")}
-                  </span>
-                </div>
-                <p className="label-eyebrow text-emerald-mid">{person.role}</p>
-                <h3 className="mt-3 font-serif text-xl text-emerald-deep tracking-tightish">
-                  {person.name}
-                </h3>
-                <p className="mt-3 text-sm text-ink-muted leading-relaxed">
-                  {person.bio}
-                </p>
-              </li>
-            ))}
-
-            <li className="border border-gold-base/30 rounded-sm p-7 bg-cream md:col-span-2 flex flex-col justify-center">
-              <p className="label-eyebrow text-emerald-mid">The bench</p>
-              <h3 className="mt-3 font-serif text-xl text-emerald-deep tracking-tightish">
-                Senior collaborators, as the work requires
-              </h3>
-              <p className="mt-3 text-sm text-ink-muted leading-relaxed max-w-xl">
-                Depending on the request, a frontend developer, a backend
-                developer, or a reviewing engineer joins the active workstream —
-                supported by AI-assisted tooling throughout. We bring in people
-                we have worked with and trust, rather than scale headcount for
-                its own sake.
-              </p>
-            </li>
+          <ul className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {teamMembers.map((member) => {
+              const initials = member.name
+                .split(" ")
+                .map((w) => w[0])
+                .slice(0, 2)
+                .join("");
+              return (
+                <li
+                  key={member.name}
+                  className="border border-gold-base/30 rounded-sm overflow-hidden bg-cream"
+                >
+                  <div className="relative aspect-[4/5] bg-emerald-soft border-b border-gold-base/30 flex items-center justify-center">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover object-[50%_30%]"
+                      />
+                    ) : (
+                      <span className="font-serif text-5xl gold-gradient-text">
+                        {initials}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-serif text-lg text-emerald-deep tracking-tightish leading-tight">
+                      {member.name}
+                    </h3>
+                    {member.spiritualName && (
+                      <p className="mt-1 font-serif italic text-sm text-emerald-mid">
+                        &ldquo;{member.spiritualName}&rdquo;
+                      </p>
+                    )}
+                    <p className="mt-2 text-[0.65rem] font-medium uppercase tracking-[0.15em] text-emerald-mid">
+                      {member.position}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="mt-20">

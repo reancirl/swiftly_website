@@ -647,6 +647,322 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "uglq-connect-members-management",
+    service: "development",
+    client: "United Grand Lodge of Queensland",
+    title: "Members management system for Freemasons Queensland",
+    type: "Members portal · Web application · Membership management",
+    outcome: "A secure home for members and lodges",
+    metric: "~300 lodges statewide",
+    cover: "/images/uglq-connect-cover.png",
+    coverFit: "contain",
+    coverBackground: "light",
+    brief:
+      "The United Grand Lodge of Queensland (Freemasons Queensland) is a fraternal organisation with nearly 300 lodges across the state. Swiftlyph built Connect — its members management system — a secure web application where members sign in and the organisation manages membership and lodge activity in one place.",
+    challenge:
+      "A statewide organisation with hundreds of independent lodges needs its membership information to be accurate, secure, and accessible to the right people. The system has to handle authenticated member access, membership and lodge records, and day-to-day administration while protecting members' privacy and keeping a long-standing institution's data in good order.",
+    approach: [
+      "Built Connect as a secure, authenticated members portal and management system.",
+      "Modelled membership and lodge administration for an organisation spanning nearly 300 lodges.",
+      "Focused on member self-service and clear access to the information members and administrators need.",
+      "Engineered the platform for privacy, reliability, and ongoing growth as the organisation's needs evolve.",
+    ],
+    outcomeBody:
+      "Freemasons Queensland has a central, secure members management system in Connect. Members sign in to a single portal, and the organisation administers membership and lodge information across the state in one place — replacing scattered records with a modern, maintainable web application.",
+    stats: [
+      { label: "Organisation", value: "Freemasons QLD" },
+      { label: "Lodges", value: "~300 statewide" },
+      { label: "Product", value: "Members portal" },
+    ],
+    stack: [
+      "Next.js",
+      "React",
+      "Authentication",
+      "Membership management",
+      "Web application",
+    ],
+    website: "https://connect.uglq.org.au/login",
+    publishedAt: "2026-10-13",
+  },
+  {
+    slug: "buffalo-built-wyoming-design-build",
+    service: "development",
+    client: "Buffalo Built",
+    title: "Website and new-community launch for a Wyoming design-build homebuilder",
+    type: "Design-build · Website · Community launch",
+    outcome: "A buy-direct homebuying experience",
+    metric: "Cornerstone Estates launch",
+    cover: "/images/buffalo-built-cover.webp",
+    brief:
+      "Buffalo Built is a Wyoming design-build homebuilder serving Buffalo, Sheridan, Gillette, and the surrounding area with new homes, custom homes, and remodels. Swiftlyph built the company's website and the launch experience for Cornerstone Estates, a new single-story home community — helping buyers purchase directly from the builder, without a realtor.",
+    challenge:
+      "The site needed to serve two audiences at once: buyers looking for a ready, pre-designed home in a new community, and clients who want a custom home or a remodel on their own land. It also had to make a brand-new development feel tangible — browsable home models, standard features like in-floor heat and quartz countertops, lot availability, and a clear path to contact the builder directly.",
+    approach: [
+      "Designed and built a marketing site covering the builder's three paths — find a home, build a custom home, and remodel.",
+      "Created the Cornerstone Estates launch experience with single-story home models, standard features, and community context near downtown Buffalo.",
+      "Made buying directly from the builder straightforward, with clear inquiry paths and no realtor required.",
+      "Built a responsive, image-forward experience with a gallery and location details to help buyers picture living there.",
+    ],
+    outcomeBody:
+      "Buffalo Built has a website that works as both a homebuilder portfolio and the launch platform for a new community. Prospective buyers can explore Cornerstone Estates home models and features, understand the buy-direct process, and reach the builder without a realtor — while custom-home and remodel clients have a clear way to start a conversation.",
+    stats: [
+      { label: "Location", value: "Buffalo, WY" },
+      { label: "Scope", value: "Website" },
+      { label: "Community", value: "Cornerstone Estates" },
+    ],
+    stack: [
+      "Web development",
+      "Responsive design",
+      "Landing pages",
+      "SEO",
+      "Lead capture",
+    ],
+    website: "https://buffalobuiltllc.com",
+    publishedAt: "2026-10-13",
+  },
+  {
+    slug: "buffalo-built-internal-operations-tool",
+    service: "development",
+    client: "Buffalo Built",
+    title: "Internal operations tool for a Wyoming homebuilder",
+    type: "Internal tool · Web application · Operations",
+    outcome: "One place to run the business",
+    metric: "Custom internal system",
+    cover: "/images/buffalo-built-internal-cover.png",
+    coverFit: "contain",
+    brief:
+      "Beyond their public website, Buffalo Built needed a private system to run the business behind the homes. Swiftlyph built a custom internal tool — a secure web application the team signs in to for day-to-day operations across their homes, lots, and buyers.",
+    challenge:
+      "A growing design-build homebuilder juggles home models, lot availability in a new community, buyer enquiries, and sales operations — often across spreadsheets and disconnected tools. The team needed a single, secure internal application that keeps this information in one place and reflects how they actually work.",
+    approach: [
+      "Built a secure, login-protected internal web application for the Buffalo Built team.",
+      "Centralised the operational information behind their homes, lots, and buyer activity.",
+      "Shaped the tool around real day-to-day workflows rather than off-the-shelf software.",
+      "Engineered it to grow with the business as Cornerstone Estates and their operations expand.",
+    ],
+    outcomeBody:
+      "Buffalo Built has a private operations tool that complements their public website. The team signs in to manage the business behind the homes in one place — a custom internal system built around how they work, rather than forcing their process into generic software.",
+    stats: [
+      { label: "Client", value: "Buffalo Built" },
+      { label: "Type", value: "Internal tool" },
+      { label: "Access", value: "Team login" },
+    ],
+    stack: [
+      "Web application",
+      "Authentication",
+      "Internal tooling",
+      "Dashboard",
+    ],
+    website: "https://internal.buffalobuiltusa.com/login",
+    publishedAt: "2026-10-13",
+  },
+  {
+    slug: "blue-mountain-co-au-marketplace",
+    service: "development",
+    client: "Blue Mountain Co",
+    title: "Shopify storefront for an Australian water-management brand",
+    type: "Shopify · Ecommerce · Storefront",
+    outcome: "A clear store for technical water products",
+    metric: "Shopify commerce",
+    cover: "/images/bmco-marketplace-cover.png",
+    brief:
+      "Blue Mountain Co (BMCO) is a Queensland-based water-management company. Swiftlyph supports its Australian online store — Blue Mountain Co Marketplace — a Shopify storefront selling rain harvesting, gutter protection, plumbing, and smart water-monitoring products to residential and commercial customers.",
+    challenge:
+      "A technical product range — rainwater filters, diverters, tank gauges, gutter mesh, plumbing, and IoT water devices — needs a storefront that helps customers choose the right parts and kits with confidence. Product discovery, customisation tools, account and purchase-order flows, and GST-aware checkout all need to work cleanly for Australian buyers.",
+    approach: [
+      "Support and develop the Shopify storefront for BMCO's Australian market.",
+      "Help customers navigate a technical catalogue across rain harvesting, gutter mesh, plumbing, and smart devices.",
+      "Support product customisation and kit-building, account access, and purchase-order workflows.",
+      "Ship ongoing improvements and maintenance around a live ecommerce operation.",
+    ],
+    outcomeBody:
+      "Blue Mountain Co has a maintained, improving Shopify storefront for its Australian customers, bringing a technical water-management catalogue — from rainwater harvesting components to smart monitoring devices — into one clear buying experience.",
+    stats: [
+      { label: "Market", value: "Australia" },
+      { label: "Platform", value: "Shopify" },
+      { label: "Category", value: "Water management" },
+    ],
+    stack: ["Shopify", "Liquid", "JavaScript", "Ecommerce", "Storefront"],
+    website: "https://aumarketplace.bluemountainco.com",
+    publishedAt: "2026-10-13",
+  },
+  {
+    slug: "bmco-squid-operations-app",
+    service: "development",
+    client: "Blue Mountain Co",
+    title: "Squid — an internal operations app for Blue Mountain Co",
+    type: "Web app · Operations · Internal tool",
+    outcome: "A custom app for the team",
+    metric: "Internal web app",
+    cover: "/images/squid-cover.png",
+    coverFit: "contain",
+    coverBackground: "light",
+    brief:
+      "Squid is an internal web application Swiftlyph builds for Blue Mountain Co (BMCO), the Queensland water-management company. It gives the BMCO team a secure, login-protected tool for running the operations behind their products and storefront.",
+    challenge:
+      "Alongside a live Shopify storefront, BMCO's team needs internal systems that reflect how the business actually runs — beyond what off-the-shelf ecommerce admin provides. Squid has to be secure, reliable, and shaped around real operational workflows.",
+    approach: [
+      "Build Squid as a secure, authenticated internal web application for the BMCO team.",
+      "Model the operational workflows that sit behind BMCO's products and storefront.",
+      "Design for clarity and day-to-day usability for internal users.",
+      "Engineer the app for reliability and ongoing growth as operations evolve.",
+    ],
+    outcomeBody:
+      "Blue Mountain Co has Squid — a custom internal application that complements its public storefront. The team signs in to manage operational work in one purpose-built tool, rather than stretching generic software to fit.",
+    stats: [
+      { label: "Client", value: "Blue Mountain Co" },
+      { label: "Product", value: "Squid app" },
+      { label: "Access", value: "Team login" },
+    ],
+    stack: ["Next.js", "React", "Authentication", "Internal tooling", "Web application"],
+    website: "https://squid.bmco.com.au",
+    publishedAt: "2026-10-13",
+  },
+  {
+    slug: "elite-anywhere-terminal",
+    service: "development",
+    client: "Elite Anywhere",
+    title: "Terminal — an internal operations platform for a white-glove logistics company",
+    type: "Web app · Logistics operations · Internal tool",
+    outcome: "One system to run the operation",
+    metric: "Internal operations platform",
+    cover: "/images/elite-terminal-cover.png",
+    brief:
+      "Elite Anywhere is a nationwide white-glove delivery and logistics company — receiving, warehousing, delivery, and installation handled as one. Swiftlyph builds Terminal, its internal operations platform: a secure, login-protected application the team uses to run the day-to-day business across warehouses and deliveries.",
+    challenge:
+      "Coordinating high-value, white-glove logistics across many warehouse locations and a nationwide delivery network is complex. The team needs an internal system that reflects how the operation actually works — receiving, warehousing, scheduling, and final-mile delivery — rather than stitching together generic tools.",
+    approach: [
+      "Build Terminal as a secure, authenticated internal platform for the Elite Anywhere team.",
+      "Model the operational workflows behind receiving, warehousing, and white-glove delivery.",
+      "Design for clarity and speed for staff working across locations.",
+      "Engineer the platform for reliability and ongoing growth as the operation scales.",
+    ],
+    outcomeBody:
+      "Elite Anywhere has Terminal — a custom internal platform built around its white-glove logistics operation. The team signs in to one purpose-built system to manage the work behind receiving, warehousing, and delivery, instead of forcing their process into off-the-shelf software.",
+    stats: [
+      { label: "Client", value: "Elite Anywhere" },
+      { label: "Product", value: "Terminal" },
+      { label: "Domain", value: "Logistics ops" },
+    ],
+    stack: ["Node.js", "Express", "JavaScript", "Internal tooling", "Web application"],
+    website: "https://terminal.eliteanywhere.com/login",
+    publishedAt: "2026-10-13",
+  },
+  {
+    slug: "debtease-loan-management-platform",
+    service: "development",
+    client: "DebtEase",
+    title: "Loan and repayment management platform for an Australian lender",
+    type: "Fintech · Lending platform · Payments",
+    outcome: "The hard parts of lending, engineered",
+    metric: "Loan management platform",
+    cover: "/images/debtease-cover.png",
+    coverFit: "contain",
+    coverBackground: "light",
+    brief:
+      "DebtEase is a new venture from Flash Money, an Australian consumer lender. Swiftlyph is building its loan management platform — the system of record that handles the full lifecycle of a loan, from balances and repayment schedules to direct debit, reconciliation, and arrears, under Australian credit regulation.",
+    challenge:
+      "Lending software is unforgiving: every cent has to be right, every time. A platform like this has to track loan balances with accruing interest and fees, generate and adjust repayment schedules, move money by direct debit and other payment rails, and reconcile what actually cleared against what was expected — all while handling the messy real world of dishonoured payments, partial payments, hardship, and restructures, and staying compliant, auditable, and private under Australia's credit regulations.",
+    approach: [
+      "Model the loan ledger and lifecycle — balances, interest and fee accrual, and repayment schedules — as a single source of truth.",
+      "Engineer scheduled repayments and direct-debit collection with idempotency, safe retries on dishonour, and reconciliation against bank and provider records.",
+      "Build arrears, hardship, and repayment-restructuring workflows that reflect how real accounts behave, not just the happy path.",
+      "Prioritise correctness, auditability, privacy, and compliance with Australian credit regulation throughout.",
+    ],
+    outcomeBody:
+      "DebtEase gets a loan management platform built for the realities of consumer lending in Australia — accurate ledgers, scheduled and reconciled payments, and the arrears and hardship handling that lending actually requires. The focus is on getting the money movement and the compliance right, so the business can lend and collect with confidence.",
+    stats: [
+      { label: "Market", value: "Australia" },
+      { label: "Domain", value: "Lending & payments" },
+      { label: "Parent", value: "Flash Money" },
+    ],
+    stack: [
+      "Loan management",
+      "Direct debit & payments",
+      "Reconciliation",
+      "Compliance",
+      "Web application",
+    ],
+    website: "https://www.debtease.com.au",
+    publishedAt: "2026-10-13",
+  },
+  {
+    slug: "8drive-car-rental-erp",
+    service: "development",
+    client: "8 Drive Car Rental",
+    title: "Car rental ERP software for a Philippine vehicle-hire company",
+    type: "ERP · Car rental operations · Web application",
+    outcome: "A rebuilt system to run the whole operation",
+    metric: "Car rental ERP",
+    cover: "/images/8drive-erp-cover.png",
+    coverFit: "contain",
+    coverBackground: "light",
+    brief:
+      "8 Drive Car Rental is a Philippine self-drive and chauffeur-driven vehicle-hire company. Swiftlyph built its car rental ERP — a rebuilt, improved replacement for the company's previous system — bringing fleet, bookings, rental agreements, and billing into one platform the team runs the business on.",
+    challenge:
+      "A car rental operation has many moving parts: a fleet of vehicles to track and keep available, bookings and schedules that must not collide, rental agreements and deposits, chauffeur and self-drive workflows, rates that vary by vehicle and period, maintenance, and invoicing and payments. The previous ERP had grown hard to work with, and the business needed a cleaner, more reliable system that matched how it actually operates.",
+    approach: [
+      "Rebuild the ERP as an improved second-generation system, learning from the limitations of the previous one.",
+      "Bring fleet and vehicle management, availability, and booking schedules into one place so vehicles and dates do not conflict.",
+      "Model rental agreements, rates, deposits, invoicing, and payments for both self-drive and chauffeur-driven hire.",
+      "Give the team operational tooling and reporting to run day-to-day rentals with less friction.",
+    ],
+    outcomeBody:
+      "8 Drive Car Rental runs on a rebuilt ERP that consolidates fleet, bookings, agreements, and billing into one system. The second-generation platform replaces one that had outgrown the business with software shaped around how the company actually operates — easier to use and built to grow with the fleet.",
+    stats: [
+      { label: "Market", value: "Philippines" },
+      { label: "Product", value: "Car rental ERP" },
+      { label: "Version", value: "Rebuilt v2" },
+    ],
+    stack: [
+      "Car rental ERP",
+      "Fleet management",
+      "Bookings & scheduling",
+      "Billing",
+      "Web application",
+    ],
+    website: "https://8drivecars.com",
+    publishedAt: "2026-10-13",
+  },
+  {
+    slug: "mikaro-erp-car-dealership",
+    service: "development",
+    client: "Mikaro ERP",
+    title: "Mikaro ERP — a car dealership platform, first deployed for Wuling",
+    type: "ERP · Car dealership · Product",
+    outcome: "A dealership platform, productised",
+    metric: "Dealership ERP product",
+    cover: "/images/mikaro-wuling-cover.svg",
+    coverFit: "contain",
+    coverBackground: "light",
+    brief:
+      "Mikaro ERP is a car dealership platform Swiftlyph is building as a product. Its first deployment powers Wuling's dealership operations at wuling.mikaroerp.com — running the business of selling and servicing cars, from vehicle inventory to sales and after-sales, in one system.",
+    challenge:
+      "A car dealership runs on more than a showroom: vehicle inventory and variants, customer leads and the sales pipeline, quotations, financing and insurance, trade-ins, after-sales service and parts, invoicing, and reporting — often across branches. Building this as a product, rather than a one-off, means designing it to serve a dealership like Wuling today and additional clients tomorrow.",
+    approach: [
+      "Design Mikaro ERP as a product that can serve multiple dealerships, with Wuling as the first client on its own branded instance.",
+      "Model the dealership lifecycle — vehicle inventory, leads and sales, quotations, and after-sales service and parts.",
+      "Bring sales, service, invoicing, and reporting into one operational system for the dealership team.",
+      "Engineer for reliability and growth so new dealerships can be onboarded over time.",
+    ],
+    outcomeBody:
+      "Wuling runs its dealership operations on Mikaro ERP, and Swiftlyph has a dealership platform built to grow beyond a single client. It is an example of taking real operational software and shaping it into a product — one dealership live today, with the foundations to serve more.",
+    stats: [
+      { label: "Product", value: "Mikaro ERP" },
+      { label: "First client", value: "Wuling" },
+      { label: "Domain", value: "Car dealership" },
+    ],
+    stack: [
+      "Car dealership ERP",
+      "Inventory & sales",
+      "After-sales & service",
+      "Multi-tenant",
+      "Web application",
+    ],
+    website: "https://wuling.mikaroerp.com",
+    publishedAt: "2026-10-13",
+  },
+  {
     slug: "connect-nigeria-marketplace-platform",
     service: "development",
     client: "Connect Nigeria",

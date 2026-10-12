@@ -7,9 +7,9 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { caseStudies } from "@/lib/content";
 import { SITE } from "@/lib/utils";
 
-const title = "Work — Swiftlyph";
+const title = "Work";
 const description =
-  "Selected Swiftlyph client work, including Shopify maintenance, ecommerce improvements, and custom app support for established brands.";
+  "Selected Swiftlyph client work — marketplaces, ERPs, lending platforms, internal tools, and online stores. Full product builds and ongoing improvements for teams across Australia, the Philippines, the US, and beyond.";
 
 export const metadata: Metadata = {
   title,
@@ -43,14 +43,16 @@ export default function WorkPage() {
 
       <section className="pt-20 md:pt-28 pb-12 md:pb-16">
         <Container size="xl">
-          <p className="label-eyebrow gold-gradient-text">Work</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-4xl md:text-6xl lg:text-7xl tracking-display text-emerald-deep leading-[1.05]">
-            Selected work, honestly scoped.
+          <p className="label-eyebrow gold-gradient-text">Selected work</p>
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl md:text-6xl lg:text-7xl tracking-display text-emerald-deep leading-[1.1]">
+            Software that runs <span className="italic">real businesses.</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-ink-muted">
-            Some projects are full builds. Some are ongoing maintenance,
-            improvements, and custom app work for platforms already in market.
-            We describe the scope clearly.
+          <p className="mt-8 max-w-3xl text-lg md:text-xl leading-relaxed text-ink-muted">
+            Marketplaces, ERPs, lending platforms, internal tools, and online
+            stores — for teams across Australia, the Philippines, the US, and
+            beyond. Some are ground-up builds; some are ongoing improvements to
+            systems already in market. Either way, we&rsquo;re clear about exactly
+            what we did.
           </p>
           <GoldDivider width="medium" className="mt-10" />
         </Container>
