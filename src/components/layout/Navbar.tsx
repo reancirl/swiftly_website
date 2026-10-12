@@ -83,7 +83,8 @@ export function Navbar() {
   const darkBg = scrolled || onDarkHero;
 
   return (
-    <header
+    <>
+      <header
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         scrolled
@@ -213,10 +214,11 @@ export function Navbar() {
           </button>
         </nav>
       </Container>
+      </header>
 
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-50 bg-emerald-deep text-cream flex flex-col"
+          className="fixed inset-0 z-[60] bg-emerald-deep text-cream flex flex-col"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
@@ -298,6 +300,6 @@ export function Navbar() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }
