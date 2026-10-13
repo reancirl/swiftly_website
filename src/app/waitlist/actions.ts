@@ -1,6 +1,7 @@
 "use server";
 
 import "server-only";
+import { headers } from "next/headers";
 import { z } from "zod";
 import {
   AUDIENCE_OPTIONS,
@@ -15,6 +16,16 @@ const WAITLIST_RECIPIENT =
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const TURNSTILE_ENDPOINT =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+
+// Must match the widget's data-action on the form.
+const TURNSTILE_ACTION = "waitlist";
+// Optional defense-in-depth: set TURNSTILE_HOSTNAMES (comma-separated) to
+// enforce the frontend host. Left empty, we rely on the widget's own hostname
+// allowlist configured in Cloudflare.
+const ALLOWED_HOSTNAMES = (process.env.TURNSTILE_HOSTNAMES ?? "")
+  .split(",")
+  .map((h) => h.trim())
+  .filter(Boolean);
 
 const audienceValues = AUDIENCE_OPTIONS.map((o) => o.value) as [
   string,
@@ -78,38 +89,58 @@ function escapeHtml(value: string) {
   );
 }
 
-async function verifyTurnstile(token: string) {
+async function verifyTurnstile(token: string, remoteip?: string) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
 
   if (!secret) {
     throw new Error("TURNSTILE_SECRET_KEY is not configured.");
   }
 
+  const body = new URLSearchParams({ secret, response: token });
+  if (remoteip) body.set("remoteip", remoteip);
+
   const response = await fetch(TURNSTILE_ENDPOINT, {
     method: "POST",
-    body: new URLSearchParams({
-      secret,
-      response: token,
-    }),
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body,
     cache: "no-store",
+    signal: AbortSignal.timeout(10_000),
   });
 
   if (!response.ok) {
-    const body = await response.text().catch(() => "");
-    throw new Error(`Turnstile HTTP ${response.status}: ${body.slice(0, 300)}`);
+    const errorBody = await response.text().catch(() => "");
+    console.error(
+      "[waitlist] Turnstile HTTP error",
+      response.status,
+      errorBody.slice(0, 300),
+    );
+    throw new Error("Turnstile verification request failed.");
   }
 
   const result = (await response.json()) as {
     success: boolean;
+    action?: string;
+    hostname?: string;
     "error-codes"?: string[];
   };
 
   if (!result.success) {
     console.error("[waitlist] Turnstile failed", result["error-codes"]);
-    // TEMPORARY DEBUG: surface Cloudflare's error-codes in the UI.
-    throw new Error(
-      `Turnstile rejected: ${(result["error-codes"] ?? []).join(", ") || "no codes"}`,
-    );
+    return false;
+  }
+
+  if (result.action && result.action !== TURNSTILE_ACTION) {
+    console.error("[waitlist] Turnstile action mismatch", result.action);
+    return false;
+  }
+
+  if (
+    ALLOWED_HOSTNAMES.length > 0 &&
+    result.hostname &&
+    !ALLOWED_HOSTNAMES.includes(result.hostname)
+  ) {
+    console.error("[waitlist] Turnstile hostname not allowed", result.hostname);
+    return false;
   }
 
   return true;
@@ -192,7 +223,7 @@ async function sendSignup(data: WaitlistData) {
       status: response.status,
       providerMessage,
     });
-    throw new Error(`Resend ${response.status}: ${providerMessage}`);
+    throw new Error("The email provider rejected the signup.");
   }
 }
 
@@ -234,7 +265,13 @@ export async function submitWaitlist(
   }
 
   try {
-    const captchaOk = await verifyTurnstile(parsed.data.turnstileToken);
+    const hdrs = await headers();
+    const remoteip =
+      hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() || undefined;
+    const captchaOk = await verifyTurnstile(
+      parsed.data.turnstileToken,
+      remoteip,
+    );
 
     if (!captchaOk) {
       return {
@@ -252,8 +289,8 @@ export async function submitWaitlist(
     );
     return {
       status: "error",
-      // TEMPORARY DEBUG: surface the real cause in the UI. Revert after diagnosis.
-      message: `[debug] ${error instanceof Error ? error.message : "Unknown error"}`,
+      message:
+        "We couldn't add you to the waitlist right now. Please try again in a moment.",
       values: raw,
     };
   }

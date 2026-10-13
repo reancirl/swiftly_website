@@ -10,7 +10,10 @@ import { Button } from "@/components/ui/Button";
 import { GoldDivider } from "@/components/brand/GoldDivider";
 
 const initial: ContactState = { status: "idle" };
-const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+// Same "swiftlyph.online" Turnstile widget as the rest of the site so one
+// TURNSTILE_SECRET_KEY verifies every form. Safe to commit (public key).
+const turnstileSiteKey =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAD1ndoLLykVAG-aZ";
 
 function SubmitButton() {
   const { pending } = useFormStatus();

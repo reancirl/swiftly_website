@@ -34,7 +34,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const initial: WaitlistState = { status: "idle" };
-const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+// Public site key for the "swiftlyph.online" Turnstile widget. Safe to commit;
+// override per-environment with NEXT_PUBLIC_TURNSTILE_SITE_KEY if ever needed.
+const turnstileSiteKey =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAD1ndoLLykVAG-aZ";
 
 const STEPS = [
   { id: 1, label: "About you" },
@@ -421,6 +424,7 @@ export function WaitlistForm() {
                 <div
                   className="cf-turnstile"
                   data-sitekey={turnstileSiteKey}
+                  data-action="waitlist"
                   data-theme="dark"
                 />
                 <FieldError>{errs.turnstileToken}</FieldError>
