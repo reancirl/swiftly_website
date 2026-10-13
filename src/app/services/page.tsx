@@ -11,7 +11,7 @@ import { SITE } from "@/lib/utils";
 
 const title = "Services — three ways to engage SwiftlyPH";
 const description =
-  "Software engineering from the Philippines, in three engagement models: Custom Software Development, a $1,498/month Development Subscription, and Forward Deployed Engineering. One senior team, one philosophy.";
+  "Software engineering from the Philippines, in three engagement models: Custom Software Development, a $1,498/month Development Subscription, and Forward Deployed Engineering. One expert team, one philosophy.";
 
 export const metadata: Metadata = {
   title,
@@ -110,7 +110,7 @@ export default function ServicesPage() {
             One team. One philosophy. Three ways to work.
           </h1>
           <p className="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-ink-muted">
-            However you engage us, the work is senior-led, AI-assisted, and
+            However you engage us, the work is expert-led, AI-assisted, and
             focused on what matters. Choose the model that fits — we will be
             honest if another suits you better.
           </p>

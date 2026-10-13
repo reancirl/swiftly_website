@@ -32,7 +32,7 @@ export function EngagementModels({
               {heading}
             </h2>
             <p className="mt-6 text-ink-muted leading-relaxed">
-              Same senior team, same engineering philosophy — three ways to hire
+              Same expert team, same engineering philosophy — three ways to hire
               us, depending on what the work needs. Pick the one that fits; we
               will tell you honestly if another suits you better.
             </p>

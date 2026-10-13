@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { RouteChrome } from "@/components/layout/RouteChrome";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BrandLoader } from "@/components/brand/BrandLoader";
 import { SITE } from "@/lib/utils";
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     "forward deployed engineering",
     "embedded software engineering",
     "AI-assisted software development",
-    "senior-led software engineering",
+    "expert-led software engineering",
     "Iligan software studio",
     "Swiftly",
   ],
@@ -149,11 +150,15 @@ export default function RootLayout({
           Skip to content
         </a>
         <BrandLoader />
-        <Navbar />
+        <RouteChrome>
+          <Navbar />
+        </RouteChrome>
         <main id="main" className="flex-1">
           {children}
         </main>
-        <Footer />
+        <RouteChrome>
+          <Footer />
+        </RouteChrome>
       </body>
     </html>
   );

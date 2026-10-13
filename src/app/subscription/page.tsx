@@ -20,7 +20,7 @@ import { SITE } from "@/lib/utils";
 
 const title = "Development Subscription — $1,498/month";
 const description =
-  "Senior-led software development on subscription. $1,498/month for one active development workstream and an unlimited backlog of requests. A managed engineering service — not a dedicated full-time hire.";
+  "Expert-led software development on subscription. $1,498/month for one active development workstream and an unlimited backlog of requests. A managed engineering service — not a dedicated full-time hire.";
 
 export const metadata: Metadata = {
   title,
@@ -108,7 +108,7 @@ export default function SubscriptionPage() {
                 </span>
               </h1>
               <p className="mt-8 max-w-xl text-lg md:text-xl text-ink-muted leading-relaxed">
-                A senior-led engineering team you can subscribe to. Keep an
+                An expert-led engineering team you can subscribe to. Keep an
                 unlimited backlog of features, fixes, and improvements — we work
                 through them one active workstream at a time.
               </p>
@@ -162,7 +162,7 @@ export default function SubscriptionPage() {
               <p>
                 A workstream may involve different people depending on the work —
                 a frontend developer on a UI feature, a backend developer on an
-                API, a senior engineer reviewing architecture, with AI assisting
+                API, an expert engineer reviewing architecture, with AI assisting
                 on implementation, testing, and requirements. It still represents
                 one active workstream, not several simultaneous projects.
               </p>

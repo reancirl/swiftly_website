@@ -19,7 +19,7 @@ export function WhySwiftly() {
             A better way to ship software.
           </h2>
           <p className="mt-6 text-ink-muted leading-relaxed">
-            Senior engineering, predictable pricing, and a focused workstream —
+            Expert engineering, predictable pricing, and a focused workstream —
             delivered through a platform we build ourselves.
           </p>
         </Reveal>

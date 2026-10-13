@@ -24,7 +24,7 @@ export function PhilippineAdvantage() {
             <GoldDivider width="medium" className="mt-8" />
             <p className="mt-8 text-ink-muted leading-relaxed max-w-md">
               Swiftly is based in Iligan, Philippines. Our operating base is how
-              we offer senior-led engineering at an accessible international
+              we offer expert-led engineering at an accessible international
               price — high-quality work and an efficient model, not cheap
               outsourcing.
             </p>

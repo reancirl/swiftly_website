@@ -54,7 +54,7 @@ export function AiEngineering() {
               })}
             </ul>
             <p className="mt-6 text-sm text-ink-muted leading-relaxed">
-              The result: senior engineering at the speed of a much larger team,
+              The result: expert engineering at the speed of a much larger team,
               without the overhead — or the hand-waving.
             </p>
           </div>

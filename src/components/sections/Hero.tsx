@@ -39,7 +39,7 @@ export function Hero() {
               data-hero-anim
               className="mt-8 max-w-xl text-lg md:text-xl leading-relaxed text-cream/80"
             >
-              Thoughtful software, built swiftly — AI-assisted workflows, senior
+              Thoughtful software, built swiftly — AI-assisted workflows, expert
               engineering judgment, and a focus on what actually matters.
             </p>
 

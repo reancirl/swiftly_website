@@ -129,7 +129,7 @@ export const engagementModels: EngagementModel[] = [
     points: [
       "Unlimited queued requests",
       "One active development workstream",
-      "Senior-led, AI-assisted delivery",
+      "Expert-led, AI-assisted delivery",
       "Access to our proprietary platform",
     ],
     cta: { label: "Explore the subscription", href: "/subscription" },
@@ -144,7 +144,7 @@ export const engagementModels: EngagementModel[] = [
     price: "Custom engagement",
     forWho: "Organizations needing embedded engineering expertise.",
     description:
-      "A senior engineer or engineering pod embedded with your team — understanding your operations, deciding what to build, and bringing software into real use.",
+      "An expert engineer or engineering pod embedded with your team — understanding your operations, deciding what to build, and bringing software into real use.",
     points: [
       "Embedded with your stakeholders",
       "Owns problems end to end",
@@ -201,7 +201,7 @@ export const customProcess: Step[] = [
     n: "04",
     icon: Code2,
     title: "Build & test",
-    body: "Our team designs, engineers, and tests the solution — AI-assisted, senior-reviewed.",
+    body: "Our team designs, engineers, and tests the solution — AI-assisted, expert-reviewed.",
   },
   {
     n: "05",
@@ -239,7 +239,7 @@ export const fdeFor: string[] = [
   "You need engineering that understands your business, not just your backlog",
   "You are integrating AI or automation into real operations",
   "You are modernizing legacy systems or connecting fragmented tools",
-  "You need senior engineering embedded with your team for a season",
+  "You need expert engineering embedded with your team for a season",
 ];
 
 export const fdeResponsibilities: string[] = [
@@ -324,7 +324,7 @@ export const fdeFaqs: Faq[] = [
   },
   {
     q: "Is it one engineer or a team?",
-    a: "Either. An engagement may involve a named senior engineer or an appropriately sized engineering pod, depending on the scope and the problem we are solving.",
+    a: "Either. An engagement may involve a named expert engineer or an appropriately sized engineering pod, depending on the scope and the problem we are solving.",
   },
   {
     q: "How is FDE priced?",
@@ -350,7 +350,7 @@ export const subscriptionPlan = {
   features: [
     "Unlimited requests in your backlog",
     "One active development workstream at a time",
-    "Senior-led software engineering",
+    "Expert-led software engineering",
     "Frontend and backend development",
     "Websites, web apps, and SaaS features",
     "Internal tools, dashboards, and APIs",
@@ -381,7 +381,7 @@ export const howItWorks: Step[] = [
     n: "03",
     icon: Code2,
     title: "We build",
-    body: "Our engineers take the top prioritized request into your single active workstream, assisted by AI tools and senior review.",
+    body: "Our engineers take the top prioritized request into your single active workstream, assisted by AI tools and expert review.",
   },
   {
     n: "04",
@@ -467,7 +467,7 @@ export type ValuePoint = {
 export const whyPoints: ValuePoint[] = [
   {
     icon: ShieldCheck,
-    title: "Senior-led engineering",
+    title: "Expert-led engineering",
     body: "Experienced engineers own architecture, decisions, and review. AI assists the work; it does not replace the judgment behind it.",
   },
   {
@@ -493,7 +493,7 @@ export const whyPoints: ValuePoint[] = [
   {
     icon: MapPin,
     title: "Philippine advantage",
-    body: "A lean studio in the Philippines, which is how we keep senior engineering at an accessible international price.",
+    body: "A lean studio in the Philippines, which is how we keep expert engineering at an accessible international price.",
   },
 ];
 
@@ -562,7 +562,7 @@ export const capabilities: Capability[] = [
 export const philippineAdvantages: { title: string; body: string }[] = [
   {
     title: "Strong engineering standards",
-    body: "A senior-led team with international client experience and modern engineering practices.",
+    body: "An expert-led team with international client experience and modern engineering practices.",
   },
   {
     title: "Efficient operating model",

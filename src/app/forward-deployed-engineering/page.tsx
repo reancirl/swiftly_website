@@ -21,7 +21,7 @@ import { SITE } from "@/lib/utils";
 
 const title = "Forward Deployed Engineering — embedded engineering services";
 const description =
-  "Engineers who work with your business, not just your backlog. SwiftlyPH embeds a senior engineer or pod with your team to understand problems, build solutions, and bring software into real use. Custom engagement.";
+  "Engineers who work with your business, not just your backlog. SwiftlyPH embeds an expert engineer or pod with your team to understand problems, build solutions, and bring software into real use. Custom engagement.";
 
 export const metadata: Metadata = {
   title,
@@ -95,7 +95,7 @@ export default function FdePage() {
                 <span className="italic gold-gradient-text">not just your backlog.</span>
               </h1>
               <p className="mt-8 max-w-xl text-lg md:text-xl text-ink-muted leading-relaxed">
-                We embed a senior engineer — or an appropriately sized pod —
+                We embed an expert engineer — or an appropriately sized pod —
                 inside your operating environment. They understand the problem,
                 decide what should be built, implement it, and help bring it into
                 real use.
