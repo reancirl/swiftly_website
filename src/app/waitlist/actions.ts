@@ -95,7 +95,8 @@ async function verifyTurnstile(token: string) {
   });
 
   if (!response.ok) {
-    throw new Error("Turnstile verification request failed.");
+    const body = await response.text().catch(() => "");
+    throw new Error(`Turnstile HTTP ${response.status}: ${body.slice(0, 300)}`);
   }
 
   const result = (await response.json()) as {
@@ -105,7 +106,10 @@ async function verifyTurnstile(token: string) {
 
   if (!result.success) {
     console.error("[waitlist] Turnstile failed", result["error-codes"]);
-    return false;
+    // TEMPORARY DEBUG: surface Cloudflare's error-codes in the UI.
+    throw new Error(
+      `Turnstile rejected: ${(result["error-codes"] ?? []).join(", ") || "no codes"}`,
+    );
   }
 
   return true;
