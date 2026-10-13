@@ -9,7 +9,7 @@ import { SITE } from "@/lib/utils";
 
 const title = "About — the studio behind Swiftlyph";
 const description =
-  "Swiftly is a senior-led software engineering studio in Iligan, Philippines. We build, improve, and scale software through custom projects, a monthly development subscription, and forward deployed engineering — AI-assisted, human-led, and focused on what matters.";
+  "Swiftly is an expert-led software engineering studio in Iligan, Philippines. We build, improve, and scale software through custom projects, a monthly development subscription, and forward deployed engineering — AI-assisted, human-led, and focused on what matters.";
 
 export const metadata: Metadata = {
   title,
@@ -58,6 +58,40 @@ const teamMembers: TeamMember[] = [
     position: "Founder & Clinical Lead",
     image: "/images/team/chermae-balaba.jpg",
   },
+  {
+    name: "Dean Mark Belano",
+    spiritualName: "Warrior",
+    position: "Software Engineer",
+    image: "/images/team/dean-mark-belano.jpg",
+  },
+  {
+    name: "Grant Gil Villareal",
+    spiritualName: "Called",
+    position: "Software Engineer",
+    image: "/images/team/grant-gil-villareal.jpg",
+  },
+  {
+    name: "Luigie Cyril Francis Posod",
+    spiritualName: "Chosen",
+    position: "Software Engineer",
+    image: "/images/team/luigie-cyril-francis-posod.jpg",
+  },
+  {
+    name: "Lloyd Gonzaga",
+    spiritualName: "Unshaken",
+    position: "Software Engineer",
+    image: "/images/team/lloyd-gonzaga.jpg",
+  },
+  {
+    name: "Rayvaen Jay Bajao",
+    position: "Project Manager",
+    image: "/images/team/rayvaen-jay-bajao.jpg",
+  },
+  {
+    name: "Zaphy Anobling",
+    position: "QA Specialist",
+    image: "/images/team/zaphy-anobling.jpg",
+  },
 ];
 
 export default function AboutPage() {
@@ -81,7 +115,7 @@ export default function AboutPage() {
         <Container size="sm">
           <div className="prose-swiftly">
             <p>
-              Swiftly began as a quiet idea: that a small, senior team — really
+              Swiftly began as a quiet idea: that a small, expert team — really
               small — could do excellent engineering work, the kind that
               compounds, if it had the patience to do it well and the discipline
               to ship it on time.
@@ -112,7 +146,7 @@ export default function AboutPage() {
             </p>
             <h2>How we work</h2>
             <p>
-              The studio is small and senior by design, with a trusted bench we
+              The studio is small and expert by design, with a trusted bench we
               bring in as the work requires. Requests, priorities, and progress
               flow through a workflow platform we are building ourselves, rather
               than a generic board bolted on. Whether you hire us for a scoped
@@ -158,10 +192,10 @@ export default function AboutPage() {
               id="team-heading"
               className="mt-4 font-serif text-3xl md:text-5xl tracking-display text-emerald-deep leading-[1.1]"
             >
-              Senior people, on every project.
+              Expert people, on every project.
             </h2>
             <p className="mt-6 text-ink-muted leading-relaxed">
-              The studio is small on purpose — a senior core with a trusted
+              The studio is small on purpose — an expert core with a trusted
               bench of engineers we bring in as the work requires. Every
               engagement is led by a Swiftly principal from first request to
               delivery.
