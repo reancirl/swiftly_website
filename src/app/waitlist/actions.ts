@@ -188,7 +188,7 @@ async function sendSignup(data: WaitlistData) {
       status: response.status,
       providerMessage,
     });
-    throw new Error("The email provider rejected the signup.");
+    throw new Error(`Resend ${response.status}: ${providerMessage}`);
   }
 }
 
@@ -248,8 +248,8 @@ export async function submitWaitlist(
     );
     return {
       status: "error",
-      message:
-        "We couldn't add you to the waitlist right now. Please try again in a moment.",
+      // TEMPORARY DEBUG: surface the real cause in the UI. Revert after diagnosis.
+      message: `[debug] ${error instanceof Error ? error.message : "Unknown error"}`,
       values: raw,
     };
   }
